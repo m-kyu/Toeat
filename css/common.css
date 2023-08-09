@@ -1,0 +1,383 @@
+@charset "UTF-8";
+/* 폰트 설정 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+/* reset */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  vertical-align: middle;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+figure, article {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+}
+header > section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  width: 1200px;
+  margin: 0px auto;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+header > section > figure {
+  width: 220px;
+}
+header > section > nav {
+  width: calc(100% - 220px);
+}
+header > section > nav > ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 30px;
+}
+header > section > nav > ul > li {
+  position: relative;
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+header > section > nav > ul > li.active {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+header > section > nav > ul > li:hover > ul {
+  display: block;
+}
+header > section > nav > ul > li > ul {
+  position: absolute;
+  display: none;
+  background: #fff;
+}
+header > section > nav > ul > li > ul > li {
+  padding: 10px 0;
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+footer {
+  width: 100%;
+  position: relative;
+}
+footer > section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 1200px;
+  margin: 0px auto;
+  display: flex;
+}
+footer > .gnb {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: none;
+  background: #fff;
+}
+footer > .gnb > ul {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+}
+footer > .gnb > ul > li {
+  width: 25%;
+  padding: 10px 0;
+}
+footer > .gnb > ul > li > figure img {
+  width: 45px;
+  height: 45px;
+}
+footer > .gnb > ul > li > figure > figcaption {
+  margin-top: 10px;
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+header.sub {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1;
+}
+
+footer.sub::before {
+  content: "";
+  background-image: url("../images/KakaoTalk_20230808_171021953.png");
+  width: 431px;
+  height: 672px;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+footer.sub::after {
+  content: "";
+  background-image: url("../images/KakaoTalk_20230808_171021953_01.png");
+  width: 340px;
+  height: 247px;
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+@media (max-width: 1200px) {
+  header > section {
+    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+  }
+  header > section > nav {
+    width: 100%;
+  }
+  header > section > nav > ul {
+    justify-content: center;
+  }
+  footer {
+    width: 90%;
+  }
+}
+@media (max-width: 480px) {
+  header > section > nav {
+    display: none;
+  }
+  footer .gnb {
+    display: block;
+  }
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 16px;
+  margin-right: 15px;
+}
+.column > div {
+  margin-bottom: 10px;
+  height: 25px;
+  color: #787878;
+}
+
+.icon {
+  width: 17px;
+  height: 18px;
+}
+
+.deco-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10%;
+}
+
+.deco-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 10%;
+}
+
+.main {
+  background-image: url("../images/main-img/summer_bg_main_map.jpg.png");
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+.main::before {
+  content: "";
+  width: 206px;
+  height: 275px;
+  background-image: url(../images/main-img/div.visual-deco-left.png);
+  background-repeat: no-repeat;
+  position: absolute;
+}
+.main::after {
+  content: "";
+  width: 174px;
+  height: 366px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-position: right top;
+  background-size: 100%;
+  background-image: url("../images/main-img/div.visual-deco-right.png");
+}
+.main > article {
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.main > article .char1 {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  width: 15%;
+  z-index: 3;
+}
+.main > article .char2 {
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  width: 20%;
+  z-index: 3;
+}
+.main > article .char3 {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  width: 7%;
+  z-index: 3;
+}
+.main > article .char4 {
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  width: 20%;
+  z-index: 5;
+}
+.main > article .char5 {
+  position: absolute;
+  left: 0%;
+  bottom: 0%;
+  width: 100%;
+  z-index: 0;
+  opacity: 50%;
+}
+.main > article .char6 {
+  position: absolute;
+  left: 45%;
+  top: 15%;
+  width: 15%;
+  z-index: 3;
+}
+.main > article .char7 {
+  position: absolute;
+  left: 7%;
+  bottom: 40%;
+  width: 5%;
+  z-index: 3;
+}
+.main > article .char8 {
+  position: absolute;
+  right: 25%;
+  bottom: 7%;
+  width: 5%;
+  z-index: 3;
+  transform: rotateY(180deg);
+}
+.main > article .map {
+  width: 40%;
+  position: absolute;
+  left: 10%;
+  top: 20%;
+}
+.main > article .food-icon {
+  width: 32%;
+  position: absolute;
+  left: 14%;
+  top: 30%;
+  z-index: 3;
+}
+.main > article .store {
+  width: 430px;
+  height: 600px;
+  border-radius: 20px 20px 6px 6px;
+  background-color: #fff;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.main > article .padding {
+  padding: 5px;
+}
+.main > article .store-img {
+  width: 100%;
+  height: 180px;
+}
+.main > article .store-img > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.main > article .store-name {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 22px;
+  margin: 20px 0;
+}
+.main > article .look-detail1 {
+  color: #BB4F59;
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 18px;
+  display: none;
+  margin-right: 15px;
+  gap: 10px;
+}
+.main > article .look-detail2 {
+  color: #BB4F59;
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  margin-right: 15px;
+  gap: 10px;
+  border-top: 1px solid lightgray;
+  padding-top: 20px;
+}
+
+main {
+  margin-bottom: 80px;
+}
+main article {
+  width: 1200px;
+  margin: 0px auto;
+}/*# sourceMappingURL=common.css.map */

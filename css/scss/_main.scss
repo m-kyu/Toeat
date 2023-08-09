@@ -1,0 +1,195 @@
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    @include pr-r{font-size:16px;}
+    margin-right: 15px;
+    >div{
+        margin-bottom: 10px;
+        height: 25px;
+        color: #787878;
+    }
+}
+
+.icon{
+    width: 17px;
+    height: 18px;
+}
+
+.deco-left{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10%;
+}
+
+.deco-right{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 10%;
+}
+
+.main{
+    background-image: url("../images/main-img/summer_bg_main_map.jpg.png");
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+
+    &::before{
+        content: "";
+        width: 206px;
+        height: 275px;
+        background-image: url(../images/main-img/div.visual-deco-left.png);
+        background-repeat: no-repeat;
+        position: absolute;
+    }
+    &::after{
+        content: '';
+        width: 174px;
+        height: 366px;
+        display: block;
+        position: absolute;
+        top:0; right:0;
+        background-position: right top;
+        background-size: 100%;
+        background-image: url("../images/main-img/div.visual-deco-right.png");
+    }
+    > article {
+        height: 100vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .char1{
+            position: absolute;
+            left: 10%;
+            top: 10%;
+            width: 15%;
+            z-index: 3;
+        }
+        
+        .char2{
+            position: absolute;
+            right: 2%;
+            bottom: 2%;
+            width: 20%;
+            z-index: 3;
+        }
+        
+        .char3{
+            position: absolute;
+            left: 50%;
+            top: 60%;
+            width: 7%;
+            z-index: 3;
+        }
+        .char4{
+            position: absolute;
+            left: 5%;
+            bottom: 5%;
+            width: 20%;
+            z-index: 5;
+        }
+        .char5{
+            position: absolute;
+            left: 0%;
+            bottom: 0%;
+            width: 100%;
+            z-index: 0;
+            opacity: 50%;
+        }
+        .char6{
+            position: absolute;
+            left: 45%;
+            top: 15%;
+            width: 15%;
+            z-index: 3;
+        }
+        .char7{
+            position: absolute;
+            left: 7%;
+            bottom: 40%;
+            width: 5%;
+            z-index: 3;
+        }
+        
+        .char8{
+            position: absolute;
+            right: 25%;
+            bottom: 7%;
+            width: 5%;
+            z-index: 3;
+            transform: rotateY(180deg);
+        }
+        
+        
+        .map{
+            width: 40%;
+            position: absolute;
+            left: 10%;
+            top: 20%;
+        }
+        
+        
+        .food-icon{
+            width: 32%;
+            position: absolute;
+            left: 14%;
+            top: 30%;
+            z-index: 3;
+        }
+        
+        .store{
+            width: 430px;
+            height: 600px;
+            border-radius: 20px 20px 6px 6px;
+            background-color: #fff;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .padding{
+            padding: 5px;
+        }
+        .store-img{
+            width: 100%;
+            height: 180px;
+            >img{
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                object-fit: cover;
+            }
+        }
+        
+        .store-name{
+            @include pr-b{font-size:22px;}
+            margin: 20px 0;
+        }
+        
+        .look-detail1{
+            color: #BB4F59;
+            @include pr-b{font-size:18px;};
+            display: none;
+            margin-right: 15px;
+            gap: 10px;
+        }
+        
+        .look-detail2{
+            color: #BB4F59;
+            @include pr-b{font-size:18px;};
+            display: flex;
+            margin-right: 15px;
+            gap: 10px;
+            border-top: 1px solid lightgray;
+            padding-top: 20px;
+        }
+    }
+}
+
+
