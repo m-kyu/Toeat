@@ -88,7 +88,6 @@
 
 @media (min-width:481px) and (max-width:1200px){
   .sub5{
-    width:100%;
     .sub5_img{
       figure{
         img{
@@ -97,7 +96,7 @@
       }
     }
     .rcmd{
-      width:90%;
+      width:85%;
       h2{
         margin:30px 0;
         @include pr-b{
@@ -105,7 +104,7 @@
         }
       }
       ul{
-        margin-bottom: 50px;
+        margin-bottom:45px;
         li{
           &:nth-of-type(5) label input{
             padding:0;
@@ -117,7 +116,7 @@
               font-size: 18px;
             }
             input{
-              width:80%;
+              width:78%;
               // height:50px;
               padding:10px;
               @include pr-r{
@@ -139,13 +138,8 @@
         }
       }
       button{
-        display: block;
-        margin: 0 auto;
-        width:168px;
-        height:54px;
-        cursor: pointer;
-        border:none;
-        background-color: #d8e5f2;
+        width:150px;
+        height:50px;
         border-radius: 4px;
         @include pr-r{
           font-size: 14px;
@@ -156,5 +150,64 @@
 }
 
 @media (max-width:480px){
-
+  .sub5{
+    .sub5_img{
+      figure{
+        img{
+          height:280px;
+        }
+      }
+    }
+    .rcmd{
+      width:85%;
+      h2{
+        margin:25px 0 15px 0;
+        @include pr-b{
+          font-size: 20px;
+        }
+      }
+      ul{
+        margin-bottom:30px;
+        li{
+          &:nth-of-type(5) label input{
+            padding:0;
+          }
+          width:100%;
+          padding:20px 0;
+          label{
+            @include pr-b{
+              font-size: 14px;
+            }
+            input{
+              width:75%;
+              // height:50px;
+              padding:5px;
+              @include pr-r{
+                font-size: 12px;
+              }
+            }
+            .photo::file-selector-button{
+              // display: none;
+              background-color: #eee;
+              border:none;
+              padding:6px 20px;
+              cursor: pointer;
+              border-radius: 3px;
+              @include pr-r{
+                font-size: 13px;
+              }
+            }
+          }
+        }
+      }
+      button{
+        width:120px;
+        height:44px;
+        border-radius: 4px;
+        @include pr-r{
+          font-size: 12px;
+        }
+      }
+    }
+  }
 }
