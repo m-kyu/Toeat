@@ -10,7 +10,7 @@ a {text-decoration: none; color:#000;}
 
 header {
     width: 100%;
-    position: fixed;
+    position: sticky; top:0;
     z-index: 1;
     > section{
         display: flex;
@@ -89,7 +89,6 @@ footer {
 header.sub{
     position: sticky;
     top:0; background: #fff;
-    z-index: 1;
 }
 
 
@@ -152,5 +151,7 @@ footer.sub {
     }
 }
 
-@import './scss/_main';
+
 @import './scss/_sub4';
+@import './scss/_sub3';
+@import './scss/_write';

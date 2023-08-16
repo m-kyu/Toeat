@@ -36,7 +36,8 @@ a {
 
 header {
   width: 100%;
-  position: fixed;
+  position: sticky;
+  top: 0;
   z-index: 1;
 }
 header > section {
@@ -134,7 +135,6 @@ header.sub {
   position: sticky;
   top: 0;
   background: #fff;
-  z-index: 1;
 }
 
 footer.sub::before {
@@ -182,202 +182,222 @@ footer.sub::after {
     display: block;
   }
 }
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  font-family: "pretendard";
-  font-weight: 500;
-  font-size: 16px;
-  margin-right: 15px;
-}
-.column > div {
-  margin-bottom: 10px;
-  height: 25px;
-  color: #787878;
-}
-
-.icon {
-  width: 17px;
-  height: 18px;
-}
-
-.deco-left {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 10%;
-}
-
-.deco-right {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 10%;
-}
-
-.main {
-  background-image: url("../images/main-img/summer_bg_main_map.jpg.png");
-  background-size: cover;
-  height: 100vh;
-  position: relative;
-}
-.main::before {
-  content: "";
-  width: 206px;
-  height: 275px;
-  background-image: url(../images/main-img/div.visual-deco-left.png);
-  background-repeat: no-repeat;
-  position: absolute;
-}
-.main::after {
-  content: "";
-  width: 174px;
-  height: 366px;
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-position: right top;
-  background-size: 100%;
-  background-image: url("../images/main-img/div.visual-deco-right.png");
-}
-.main > article {
-  height: 100vh;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.main > article .char1 {
-  position: absolute;
-  left: 10%;
-  top: 10%;
-  width: 15%;
-  z-index: 3;
-}
-.main > article .char2 {
-  position: absolute;
-  right: 2%;
-  bottom: 2%;
-  width: 20%;
-  z-index: 3;
-}
-.main > article .char3 {
-  position: absolute;
-  left: 50%;
-  top: 60%;
-  width: 7%;
-  z-index: 3;
-}
-.main > article .char4 {
-  position: absolute;
-  left: 5%;
-  bottom: 5%;
-  width: 20%;
-  z-index: 5;
-}
-.main > article .char5 {
-  position: absolute;
-  left: 0%;
-  bottom: 0%;
-  width: 100%;
-  z-index: 0;
-  opacity: 50%;
-}
-.main > article .char6 {
-  position: absolute;
-  left: 45%;
-  top: 15%;
-  width: 15%;
-  z-index: 3;
-}
-.main > article .char7 {
-  position: absolute;
-  left: 7%;
-  bottom: 40%;
-  width: 5%;
-  z-index: 3;
-}
-.main > article .char8 {
-  position: absolute;
-  right: 25%;
-  bottom: 7%;
-  width: 5%;
-  z-index: 3;
-  transform: rotateY(180deg);
-}
-.main > article .map {
-  width: 40%;
-  position: absolute;
-  left: 10%;
-  top: 20%;
-}
-.main > article .food-icon {
-  width: 32%;
-  position: absolute;
-  left: 14%;
-  top: 30%;
-  z-index: 3;
-}
-.main > article .store {
-  width: 430px;
-  height: 600px;
-  border-radius: 20px 20px 6px 6px;
-  background-color: #fff;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.main > article .padding {
-  padding: 5px;
-}
-.main > article .store-img {
-  width: 100%;
-  height: 180px;
-}
-.main > article .store-img > img {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.main > article .store-name {
-  font-family: "pretendard";
-  font-weight: 700;
-  font-size: 22px;
-  margin: 20px 0;
-}
-.main > article .look-detail1 {
-  color: #BB4F59;
-  font-family: "pretendard";
-  font-weight: 700;
-  font-size: 18px;
-  display: none;
-  margin-right: 15px;
-  gap: 10px;
-}
-.main > article .look-detail2 {
-  color: #BB4F59;
-  font-family: "pretendard";
-  font-weight: 700;
-  font-size: 18px;
-  display: flex;
-  margin-right: 15px;
-  gap: 10px;
-  border-top: 1px solid lightgray;
-  padding-top: 20px;
-}
-
 main {
   margin-bottom: 80px;
 }
 main article {
   width: 1200px;
   margin: 0px auto;
+}
+
+main {
+  margin-top: 50px;
+  width: 100%;
+  position: relative;
+}
+main .sub_3_main1 {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+main .sub_3_main1 .title {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 25px;
+}
+main .sub_3_main1 .search {
+  width: 40%;
+}
+main .sub_3_main1 .search label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #f1afaf;
+  border-radius: 30px;
+  padding: 10px;
+}
+main .sub_3_main1 .search label input {
+  width: 80%;
+  border: 0;
+  outline: none;
+  font-size: 16px;
+  font-weight: bolder;
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 16px;
+}
+main .sub_3_main1 .search label button {
+  border: 0;
+  background-color: white;
+}
+main .sub_3_main1 .search label button img {
+  filter: invert(30%) sepia(89%) saturate(5000%) hue-rotate(358deg) brightness(95%) contrast(113%);
+}
+main .sub_3_main2 {
+  width: 1200px;
+  margin: 0 auto;
+}
+main .sub_3_main2 ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+main .sub_3_main2 ul li {
+  margin-bottom: 30px;
+  width: 30%;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.14);
+  border-radius: 20px;
+  padding: 20px 30px;
+}
+main .sub_3_main2 ul li .matname {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .sub_3_main2 ul li .matname p {
+  background-color: #eee;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+main .sub_3_main2 ul li .matname span img {
+  width: 34px;
+  height: 34px;
+}
+main .sub_3_main2 ul li .star {
+  margin-bottom: 10px;
+}
+main .sub_3_main2 ul li .star img {
+  width: 210px;
+}
+main .sub_3_main2 ul li .img img {
+  width: 100%;
+  height: 155px;
+  border-radius: 20px;
+}
+main .sub_3_main2 ul li .say {
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 16px;
+}
+
+main.wr {
+  margin-bottom: 80px;
+}
+main.wr .write_title {
+  margin-top: 200px;
+  width: 1200px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+}
+main.wr .write_title h2 {
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 25px;
+  margin: 0 auto;
+}
+main.wr .write_box {
+  width: 1200px;
+  margin: 0px auto;
+}
+main.wr .write_box form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+main.wr .write_box form .heart {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+main.wr .write_box form .heart p {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 16px;
+}
+main.wr .write_box form .heart p span {
+  padding: 5px 0;
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 25px;
+  color: #FF6888;
+}
+main.wr .write_box form .heart .click a {
+  cursor: pointer;
+}
+main.wr .write_box form .heart .click a span {
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 16px;
+}
+main.wr .write_box form .heart .click a span.active {
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 25px;
+  color: #FF6888;
+}
+main.wr .write_box form .heart .click a input[type=radio] {
+  display: none;
+}
+main.wr .write_box textarea {
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 16px;
+  width: 100%;
+  height: 20.25em;
+  border: none;
+  resize: none;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.14);
+  border-radius: 10px;
+  padding: 20px 30px;
+}
+main.wr .write_box textarea:focus {
+  outline: 2px solid #FF6888;
+}
+main.wr .write_box textarea:focus::-moz-placeholder {
+  color: transparent;
+}
+main.wr .write_box textarea:focus::placeholder {
+  color: transparent;
+}
+main.wr .write_box label .file {
+  margin: 20px 0;
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 16px;
+  color: #FF6888;
+  vertical-align: middle;
+}
+main.wr .write_box label .file::file-selector-button {
+  width: 150px;
+  height: 30px;
+  background: #F2F2F2;
+  border: none;
+  border-radius: 20px;
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 16px;
+}
+main.wr .write_box form > div {
+  display: flex;
+  justify-content: space-between;
+}
+main.wr .write_box form > div > div {
+  margin: 20px 0;
+}
+main.wr .write_box form > div > div button {
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #F2F2F2;
+  margin: 0 10px;
 }/*# sourceMappingURL=common.css.map */
