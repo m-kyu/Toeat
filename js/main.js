@@ -1,5 +1,26 @@
-const canvas = document.querySelector('canvas'), ctx = canvas.getContext('2d');
 
+let ranNum = Math.floor(Math.random()*627);
+fetch("./js/data/md.json")
+            .then((data) => data.json())
+            .then(({ list })=>{
+                let imgSrc = ``,url=``;
+                if(list[ranNum].booking == '') {
+                    url = `업체에 전화 문의 주세요.`
+                } else {
+                    url = `<a href="${list[ranNum].booking}" target="_blank">네이버 예약</a>`
+                }
+                $(".store-img").find("img").attr('src',list[ranNum].images)
+                $(".store-name").text(list[ranNum].name)
+                $(".column").eq(1).find("div").eq(0).text(list[ranNum].adress)
+                $(".column").eq(1).find("div").eq(1).text(list[ranNum].phone ? list[ranNum].phone  : '등록된 전화번호가 없습니다.')
+                $(".column").eq(1).find("div").eq(2).text(list[ranNum].time ? list[ranNum].time.substr(0,28)+"..."  : '등록된 시간이 없습니다.' )
+                $(".column").eq(1).find("div").eq(3).text(list[ranNum].description ? list[ranNum].description.substr(0,28)+"..." : "등록 된 정보가 없습니다." )
+                $(".column").eq(1).find("div").eq(4).html(url)
+                $(".column").eq(1).find("div").eq(5).text(list[ranNum].category)
+                $(".column").eq(1).find("div").eq(6).text(list[ranNum].menus[0])
+            })
+
+const canvas = document.querySelector('canvas'), ctx = canvas.getContext('2d'), dragBox = document.querySelector('.main > article');
 let ico_xy = [ 
     {x:380,y:420,thumb:'avocado',w:38,h:38,name:'서초구'},
     {x:120,y:410,thumb:'bread',w:38,h:38,name:'구로구'},
@@ -40,7 +61,6 @@ img.addEventListener('load',()=>{
         newImg.addEventListener('load',()=>{
             ctx.drawImage(newImg, v.x, v.y, v.w, v.h)
         })
-        let sx = v.x + v.w, sy = v.y + v.h;
 
     });
 })
@@ -62,7 +82,7 @@ canvas.onclick = function(event){
             tag +=`
                 <div class="eat_title">
                     <figure>
-                        <p>이미지 나올거임</p>
+                        <p><img src="./images/main-img/logo-orange.png" alt="logo"></p>
                         <figcaption>
                             <h2> ${v.name} 맛집 </h2>
                             <span> 어쩌고 저쩌고 </span>
@@ -92,3 +112,37 @@ canvas.onclick = function(event){
         } 
     });
 }
+
+
+let mov=false;
+dragBox.addEventListener( "mousedown", (e)=>{
+        let x = e.clientX;
+        let y = e.clientY;
+        mov = true;
+        moves(x,y)
+});
+dragBox.addEventListener( "mouseup", (e)=>{
+    let x = e.clientX;
+    let y = e.clientY;
+    mov = false; 
+    moves(x,y)
+});
+
+
+
+function moves(x,y){
+    let thisLeft = Number(window.getComputedStyle(canvas).getPropertyValue('margin-left').replace(/px/g, '') )
+    let thisTop = Number(window.getComputedStyle(canvas).getPropertyValue('margin-top').replace(/px/g, '') )
+    dragBox.addEventListener( "mousemove", (e)=>{
+        if (mov) {
+            let mx = e.clientX - x;
+            let my = e.clientY - y;
+            let marginLeft = thisLeft + mx;
+            let marginTop = thisTop + my;
+            canvas.style=`margin-left:${marginLeft}px; margin-top:${marginTop}px; z-index:1000;`
+        } else {
+            canvas.style.zIndex = 0;
+        }
+    })   
+}
+
