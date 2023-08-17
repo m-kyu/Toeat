@@ -199,6 +199,8 @@ footer.sub::after {
   margin-bottom: 10px;
   height: 25px;
   color: #787878;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .icon {
@@ -270,12 +272,30 @@ footer.sub::after {
 .main > article .store .eat_title figure {
   display: flex;
   flex-wrap: nowrap;
+  gap: 10px;
+}
+.main > article .store .eat_title figure figcaption h2 {
+  margin: 17px 0 5px;
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 25px;
 }
 .main > article .store .eat_list {
   height: 80%;
   overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  padding-right: 3px;
+}
+.main > article .store .eat_list::-webkit-scrollbar {
+  width: 3px;
+}
+.main > article .store .eat_list::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+.main > article .store .eat_list::-webkit-scrollbar-track {
+  background-color: #eee;
 }
 .main > article .store .eat_list li {
   width: 45%;
@@ -283,9 +303,15 @@ footer.sub::after {
 .main > article .store .eat_list li p {
   height: 155px;
   overflow: hidden;
+  border-radius: 15px;
 }
 .main > article .store .eat_list li p img {
   height: 100%;
+}
+.main > article .store .eat_list li h2 {
+  font-family: "pretendard";
+  font-weight: 700;
+  font-size: 16px;
 }
 .main > article .store .padding {
   padding: 5px;

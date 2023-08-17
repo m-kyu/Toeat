@@ -12,6 +12,8 @@
         margin-bottom: 10px;
         height: 25px;
         color: #787878;
+        overflow: hidden;
+        white-space: nowrap;
     }
 }
 
@@ -84,6 +86,10 @@
                 figure {
                     display: flex;
                     flex-wrap: nowrap;
+                    gap:10px;
+                    figcaption{
+                        h2 {margin:17px 0 5px; @include pr-b{font-size:25px;}}
+                    }
                 }
             }
             .eat_list {
@@ -91,15 +97,22 @@
                 overflow-y: auto;
                 display: flex;
                 flex-wrap: wrap;
+                justify-content: space-between;
+                padding-right:3px;
+                &::-webkit-scrollbar {width: 3px; }
+                &::-webkit-scrollbar-thumb { background-color: #000;}
+                &::-webkit-scrollbar-track { background-color: #eee;}
                 li {
                     width: 45%;
                     p {
                         height: 155px;
                         overflow: hidden;
+                        border-radius: 15px;
                         img {
                             height: 100%;
                         }
                     }
+                    h2 {@include pr-b{font-size:16px;}}
                 }
             }
 
