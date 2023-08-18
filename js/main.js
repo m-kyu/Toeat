@@ -1,4 +1,3 @@
-
 let ranNum = Math.floor(Math.random()*627);
 fetch("./js/data/md.json")
             .then((data) => data.json())
@@ -21,6 +20,7 @@ fetch("./js/data/md.json")
             })
 
 const canvas = document.querySelector('canvas'), ctx = canvas.getContext('2d'), dragBox = document.querySelector('.main > article');
+
 let ico_xy = [ 
     {x:380,y:420,thumb:'avocado',w:38,h:38,name:'서초구'},
     {x:120,y:410,thumb:'bread',w:38,h:38,name:'구로구'},
@@ -71,7 +71,7 @@ canvas.onclick = function(event){
 
     const list_html = document.querySelector('.store')
     
-    let tag ='',tag_li='';
+    let tag ='',tag_li='',categorys=[],caBtn='';
     
 
     ico_xy.forEach((v,k) => {
@@ -85,9 +85,10 @@ canvas.onclick = function(event){
                         <p><img src="./images/main-img/logo-orange.png" alt="logo"></p>
                         <figcaption>
                             <h2> ${v.name} 맛집 </h2>
-                            <span> 어쩌고 저쩌고 </span>
                         </figcaption>
                     </figure>
+                    
+                    <span> 어쩌고 저쩌고 </span>
                 </div>
                 <ul class="eat_list">
 
@@ -97,6 +98,7 @@ canvas.onclick = function(event){
             .then(({ list })=>{
                 list.forEach((j,z)=>{
                     if(j.adress.includes(v.name) == true){
+                        categorys.push(j.category);
                         tag_li +=`
                             <li>
                                 <p><img src="${j.images}" alt="${j.name}"></p>
@@ -108,6 +110,12 @@ canvas.onclick = function(event){
                 tag += tag_li;
                 tag += `</ul>`;
                 list_html.innerHTML = tag;
+                let ca = new Set(categorys);
+                let ca_arr = [...ca];
+                for(let i=0; i < ca_arr.length; i++){
+                    caBtn += `<span> ${ca_arr[i]} </span>`;
+                }
+                $(".eat_title").find('span').html(caBtn)
             })
         } 
     });
@@ -115,13 +123,13 @@ canvas.onclick = function(event){
 
 
 let mov=false;
-dragBox.addEventListener( "mousedown", (e)=>{
+canvas.addEventListener( "mousedown", (e)=>{
         let x = e.clientX;
         let y = e.clientY;
         mov = true;
         moves(x,y)
 });
-dragBox.addEventListener( "mouseup", (e)=>{
+canvas.addEventListener( "mouseup", (e)=>{
     let x = e.clientX;
     let y = e.clientY;
     mov = false; 
@@ -133,7 +141,7 @@ dragBox.addEventListener( "mouseup", (e)=>{
 function moves(x,y){
     let thisLeft = Number(window.getComputedStyle(canvas).getPropertyValue('margin-left').replace(/px/g, '') )
     let thisTop = Number(window.getComputedStyle(canvas).getPropertyValue('margin-top').replace(/px/g, '') )
-    dragBox.addEventListener( "mousemove", (e)=>{
+    canvas.addEventListener( "mousemove", (e)=>{
         if (mov) {
             let mx = e.clientX - x;
             let my = e.clientY - y;
