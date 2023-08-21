@@ -1,3 +1,19 @@
+
+function checkCode(){
+    let wr_code = localStorage.getItem("w_code");
+    if (wr_code){
+        wr_arr = wr_code.split(',');
+        let setData = $(".code_insert").data('code');
+        for(let i=0; i<wr_arr.length; i++){
+            if(wr_arr[i] == setData){
+                $(".code_insert").addClass('active')
+            } else {
+                $(".code_insert").removeClass('active')
+            }
+        }
+    }
+}
+
 let ranNum = Math.floor(Math.random()*627);
 fetch("./js/data/md.json")
             .then((data) => data.json())
@@ -8,7 +24,8 @@ fetch("./js/data/md.json")
                 } else {
                     url = `<a href="${list[ranNum].booking}" target="_blank">네이버 예약</a>`
                 }
-                $(".store-img").find("img").attr('src',list[ranNum].images)
+                $(".store-img figure > img").attr('src',list[ranNum].images)
+                $(".store-img figure > figcaption > p").attr('data-code',list[ranNum].code)
                 $(".store-name").text(list[ranNum].name)
                 $(".column").eq(1).find("div").eq(0).text(list[ranNum].adress)
                 $(".column").eq(1).find("div").eq(1).text(list[ranNum].phone ? list[ranNum].phone  : '등록된 전화번호가 없습니다.')
@@ -17,9 +34,12 @@ fetch("./js/data/md.json")
                 $(".column").eq(1).find("div").eq(4).html(url)
                 $(".column").eq(1).find("div").eq(5).text(list[ranNum].category)
                 $(".column").eq(1).find("div").eq(6).text(list[ranNum].menus[0])
+                checkCode();
             })
 
 const canvas = document.querySelector('canvas'), ctx = canvas.getContext('2d'), dragBox = document.querySelector('.main > article');
+
+
 
 let ico_xy = [ 
     {x:380,y:420,thumb:'avocado',w:38,h:38,name:'서초구'},
@@ -82,13 +102,13 @@ canvas.onclick = function(event){
             tag +=`
                 <div class="eat_title">
                     <figure>
-                        <p><img src="./images/main-img/logo-orange.png" alt="logo"></p>
+                        <p><img class="eat_logo" src="./images/main-img/logo-orange.png" alt="logo"></p>
                         <figcaption>
                             <h2> ${v.name} 맛집 </h2>
                         </figcaption>
                     </figure>
                     
-                    <span> 어쩌고 저쩌고 </span>
+                    <span>  </span>
                 </div>
                 <ul class="eat_list">
 
@@ -100,7 +120,7 @@ canvas.onclick = function(event){
                     if(j.adress.includes(v.name) == true){
                         categorys.push(j.category);
                         tag_li +=`
-                            <li>
+                            <li onClick="newPop(${j.code})">
                                 <p><img src="${j.images}" alt="${j.name}"></p>
                                 <h2>${j.name}</h2>
                             </li>
@@ -110,6 +130,8 @@ canvas.onclick = function(event){
                 tag += tag_li;
                 tag += `</ul>`;
                 list_html.innerHTML = tag;
+                list_html.classList.add("active");
+
                 let ca = new Set(categorys);
                 let ca_arr = [...ca];
                 for(let i=0; i < ca_arr.length; i++){
@@ -117,8 +139,75 @@ canvas.onclick = function(event){
                 }
                 $(".eat_title").find('span').html(caBtn)
             })
+
         } 
     });
+}
+
+let newTage = '';
+function newPop(e){
+    const list_html = document.querySelector('.store')
+    list_html.classList.remove('active');
+    fetch("./js/data/md.json")
+            .then((data) => data.json())
+            .then(({ list })=>{
+                list.forEach((data)=>{
+                    if (data.code == e) {
+                        let url=``;
+                        if(data.booking == '') {
+                            url = `업체에 전화 문의 주세요.`
+                        } else {
+                            url = `<a href="${data.booking}" target="_blank">네이버 예약</a>`
+                        }
+                        list_html.innerHTML = `
+                            <div class="store-img">
+                                <figure>
+                                    <img src="${data.images}" alt="">
+                                    <figcaption>
+                                        <p class="code_insert" onClick="code_in(${data.code})" data-code="${data.code}"></p>
+                                    </figcaption>
+                                </figure>
+                                <div class="padding">
+                                    <div class="row look-detail1">
+                                        <div><img src="./images/main-img/icons/map.png" alt=""></div>
+                                        <div>자세히 보기</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padding">
+                                <div class="store-name">${data.name}</div>
+                                <div class="row">
+                                    <div class="column">
+                                        <div><img class="icon" src="./images/main-img/icons/location.png" alt=""></div>
+                                        <div><img class="icon" src="./images/main-img/icons/phone.png" alt=""></div>
+                                        <div><img class="icon" src="./images/main-img/icons/clock.png" alt=""></div>
+                                        <div><img class="icon" src="./images/main-img/icons/inform.png" alt=""></div>
+                                        <div><img class="icon" src="./images/main-img/icons/reserve.png" alt=""></div>
+                                        <div><img class="icon" src="./images/main-img/icons/category.png" alt=""></div>
+                                        <div><img class="icon" src="./images/main-img/icons/sig.png" alt=""></div>
+                                    </div>
+                                    <div class="column">
+                                        <div>${data.adress}</div>
+                                        <div>${data.phone ? data.phone  : '등록된 전화번호가 없습니다.'}</div>
+                                        <div>${data.time ? data.time.substr(0,28)+"..."  : '등록된 시간이 없습니다.'}</div>
+                                        <div>${data.description ? data.description.substr(0,28)+"..." : "등록 된 정보가 없습니다."}</div>
+                                        <div>${url}</div>
+                                        <div>${data.category}</div>
+                                        <div>${data.menus[0]}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padding">
+                                <div class="row look-detail2">
+                                    <div><img src="./images/main-img/icons/map.png" alt=""></div>
+                                    <div>자세히 보기</div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                })
+                checkCode()
+            })
 }
 
 
@@ -154,3 +243,42 @@ function moves(x,y){
     })   
 }
 
+
+function code_in(e){
+    let w_codes = localStorage.getItem("w_code")
+    
+    if(!w_codes){
+        localStorage.setItem("w_code",e)
+    } else {
+        let w_arr = w_codes.split(',')
+        for(let i=0; i<w_arr.length; i++){
+            if(w_arr[i] != e){
+                let codes = w_codes + "," + e
+                localStorage.setItem("w_code", codes)
+            } else {
+                localStorage.setItem("w_code", w_arr.filter(v => v != e))
+                checkCode()
+            }
+        }
+    }    
+    checkCode()
+}
+$(".code_insert").on('click',function(){
+    let w_codes = localStorage.getItem("w_code")
+    
+    if(!w_codes){
+        localStorage.setItem("w_code",$(this).data('code'))
+    } else {
+        let w_arr = w_codes.split(',')
+        for(let i=0; i<w_arr.length; i++){
+            if(w_arr[i] != $(this).data('code')){
+                let codes = w_codes + "," + $(this).data('code')
+                localStorage.setItem("w_code", codes)
+            } else {
+                localStorage.setItem("w_code", w_arr.filter(v => v != $(this).data('code')))
+                checkCode()
+            }
+        }
+    }    
+    checkCode()
+})

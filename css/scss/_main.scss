@@ -88,6 +88,9 @@
                     flex-wrap: nowrap;
                     gap:10px;
                     align-items: center;
+                    .eat_logo{
+                        height: 40px;
+                    }
                     figcaption{
                         h2 {margin:0; @include pr-b{font-size:25px;}}
                     }
@@ -122,13 +125,32 @@
             }
             .store-img{
                 width: 100%;
-                height: 180px;
-                >img{
-                    width: 100%;
-                    height: 100%;
-                    border-radius: 10px;
-                    object-fit: cover;
+                figure {
+                    height: 180px;
+                    overflow: hidden;
+                    position: relative;
+                    >img{
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 10px;
+                        object-fit: cover;
+                    }
+                    figcaption {
+                        p{
+                            position: absolute;
+                            right:10px; bottom:0;
+                            color:#000;
+                            &::after{
+                                content: 'favorite';
+                                font-size: 30px;
+                                overflow: hidden;
+                                font-family: 'Material Symbols Outlined';
+                            }
+                            &.active::after{color:red;}
+                        }
+                    }
                 }
+                
             }
             
             .store-name{
@@ -162,7 +184,7 @@
             position: absolute;
             left: 10%;
             top: 10%;
-            width: 15%;
+            width: 300px;
             z-index: 3;
         }
         
@@ -170,7 +192,7 @@
             position: absolute;
             right: 2%;
             bottom: 2%;
-            width: 20%;
+            width: 400px;
             z-index: 3;
         }
         
@@ -178,21 +200,21 @@
             position: absolute;
             left: 50%;
             top: 60%;
-            width: 7%;
+            width: 140px;
             z-index: 3;
         }
         .char4{
             position: absolute;
             left: 5%;
             bottom: 5%;
-            width: 20%;
+            width: 400px;
             z-index: 5;
         }
         .char5{
             position: absolute;
             left: 0%;
             bottom: 0%;
-            width: 100%;
+            width: 1920px;
             z-index: 0;
             opacity: 50%;
         }
@@ -200,14 +222,14 @@
             position: absolute;
             left: 45%;
             top: 15%;
-            width: 15%;
+            width: 300px;
             z-index: 3;
         }
         .char7{
             position: absolute;
             left: 7%;
             bottom: 40%;
-            width: 5%;
+            width: 100px;
             z-index: 3;
         }
         
@@ -215,7 +237,7 @@
             position: absolute;
             right: 25%;
             bottom: 7%;
-            width: 5%;
+            width: 100px;
             z-index: 3;
             transform: rotateY(180deg);
         }
@@ -224,4 +246,62 @@
     }
 }
 
+@media screen and (min-width: 481px) and (max-width: 1200px) {
+    .char1, .char2, .char3, .char4,.char7, .char8{
+        display: none;
+    }
 
+    .main {
+        > article {
+            .char6{
+                position: absolute;
+                left: 15%;
+                top: 70%;
+                width: 300px;
+                z-index: 3;
+            }
+            .store{
+                width: 800px;
+                height: 350px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                position: absolute;
+                left: 0; right: 0;
+                bottom: -20%;
+                margin: 0 auto;
+                &.active{
+                    flex-direction: column;
+                }
+                .store-img{
+                   width: 48%;
+                   margin-right: 20px;
+                    >figure{
+                        height: 250px;
+                    }
+                }
+                .store-name {margin-top: 0;}
+                .look-detail1{ display: flex; margin-top: 20px;}
+                .look-detail2{ display: none; }
+                .eat_title{
+                    justify-content: start;
+                    figure {
+                        height: 40px;
+                        gap:10px;
+                        align-items: center;
+                        .eat_logo{
+                            height: 40px;
+                        }
+                        figcaption{
+                            h2 {margin:0; @include pr-b{font-size:25px;}}
+                        }
+                    }
+                }
+                .eat_list {
+                    li { width: 18%; }
+                }
+            }
+        }
+    }
+        
+}
