@@ -1,5 +1,7 @@
 @import './scss/_mixin';
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
+
 /* reset */
 * {box-sizing: border-box;}
 html, body {@include mp-reset;}
@@ -11,7 +13,7 @@ a {text-decoration: none; color:#000;}
 header {
     width: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 6;
     > section{
         display: flex;
         justify-content: space-between;
@@ -43,6 +45,12 @@ header {
                         position: absolute;
                         display: none;
                         background: #fff;
+                        width: 150px;
+                        flex-direction: column;
+                        justify-content: center;
+                        text-align: center;
+                        left:-30px;
+                        top:35px;
                         > li {
                             padding:10px 0;
                             @include pr-r{font-size:1.5rem;}
@@ -89,7 +97,7 @@ footer {
 header.sub{
     position: sticky;
     top:0; background: #fff;
-    z-index: 1;
+    z-index: 6;
 }
 
 
@@ -153,4 +161,11 @@ footer.sub {
 }
 
 @import './scss/_main';
+@import './scss/_sub1';
+@import './scss/_sub2';
+@import './scss/_sub3';
 @import './scss/_sub4';
+@import './scss/_sub5';
+
+
+@import './scss/_write';
