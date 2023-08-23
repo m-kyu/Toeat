@@ -1,3 +1,4 @@
+$("header").addClass('sub')
 const check = document.querySelectorAll('.click > div > a');
 const text = document.querySelectorAll('span');
 const imgshow = document.querySelector('ul');

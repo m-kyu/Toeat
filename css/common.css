@@ -262,9 +262,14 @@ footer.sub::after {
   background-size: cover;
   height: 100vh;
   position: relative;
+  z-index: 1;
+}
+.main .eat_title > span {
+  display: none;
 }
 .main::before {
   content: "";
+  z-index: 0;
   width: 206px;
   height: 275px;
   background-image: url(../images/main-img/div.visual-deco-left.png);
@@ -273,6 +278,7 @@ footer.sub::after {
 }
 .main::after {
   content: "";
+  z-index: -1;
   width: 174px;
   height: 366px;
   display: block;
@@ -325,6 +331,7 @@ footer.sub::after {
   font-size: 25px;
 }
 .main > article .store .eat_list {
+  margin-top: 20px;
   height: 88%;
   overflow-y: auto;
   display: flex;
@@ -483,11 +490,7 @@ footer.sub::after {
     width: 100%;
   }
   .main > article .char6 {
-    position: absolute;
-    left: 15%;
-    top: 70%;
-    width: 300px;
-    z-index: 3;
+    display: none;
   }
   .main > article .store {
     width: 90%;
@@ -543,6 +546,10 @@ footer.sub::after {
   }
 }
 @media (max-width: 480px) {
+  .main > article canvas {
+    margin-left: -153.75px;
+    margin-top: -333.75px;
+  }
   .row {
     display: none;
   }
@@ -550,9 +557,7 @@ footer.sub::after {
     display: none;
   }
   .main > article .char6 {
-    position: absolute;
-    left: 15%;
-    top: 20%;
+    display: none;
   }
   .main > article .store {
     width: 400px;
@@ -1322,6 +1327,9 @@ main.sub3 .r_pop .popbtn button {
   }
 }
 @media (max-width: 480px) {
+  main.sub3 .r_pop .r_pop1 {
+    width: 80%;
+  }
   main.sub3 .sub_3_main1 .search {
     width: 60%;
   }

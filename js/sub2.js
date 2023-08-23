@@ -1,3 +1,4 @@
+$("header").addClass('sub')
 const con = document.querySelector('.con')
 let tag ='';
 

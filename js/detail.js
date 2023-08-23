@@ -1,3 +1,4 @@
+$("header").addClass('sub')
 const elUl = document.querySelector('.d-list')
 let code='';
 fetch('./js/data/md.json')

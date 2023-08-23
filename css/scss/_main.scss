@@ -40,9 +40,11 @@
     background-size: cover;
     height: 100vh;
     position: relative;
-
+    z-index: 1;
+    .eat_title > span {display: none;}
     &::before{
         content: "";
+        z-index: 0;
         width: 206px;
         height: 275px;
         background-image: url(../images/main-img/div.visual-deco-left.png);
@@ -51,6 +53,7 @@
     }
     &::after{
         content: '';
+        z-index: -1;
         width: 174px;
         height: 366px;
         display: block;
@@ -99,6 +102,7 @@
                 }
             }
             .eat_list {
+                margin-top: 20px;
                 height: 88%;
                 overflow-y: auto;
                 display: flex;
@@ -257,12 +261,7 @@
         > article {
             
             .char5 {width: 100%;}
-            .char6{
-                position: absolute;
-                left: 15%;
-                top: 70%;
-                width: 300px;
-                z-index: 3;
+            .char6{display: none;
             }
             .store{
                 width: 90%;
@@ -310,6 +309,10 @@
         
 }
 @media (max-width: 480px) {
+    .main > article canvas {
+        margin-left: -153.75px;
+        margin-top: -333.75px;
+    }
     
     .row{display: none;}
     .char1, .char2, .char3, .char4,.char7, .char8{
@@ -317,10 +320,7 @@
     }
     .main {
         > article {
-            .char6{
-                position: absolute;
-                left: 15%;
-                top: 20%;
+            .char6{display: none;
             }
             .store{
                 width: 400px;
