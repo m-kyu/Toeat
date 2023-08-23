@@ -4,7 +4,7 @@
 
 /* reset */
 * {box-sizing: border-box;}
-html, body {@include mp-reset;}
+html, body {@include mp-reset; position: relative; overflow-x:hidden ;}
 img {width:100%; object-fit: cover; vertical-align: middle;}
 ul {list-style: none; @include mp-reset;}
 figure,article {@include mp-reset;}
@@ -12,7 +12,7 @@ a {text-decoration: none; color:#000;}
 
 header {
     width: 100%;
-    position: fixed;
+    position: fixed; top:0;
     z-index: 6;
     > section{
         display: flex;
@@ -44,13 +44,12 @@ header {
                     > ul{
                         position: absolute;
                         display: none;
-                        background: #fff;
+                        background: rgba(255,255,255,0.7);
                         width: 150px;
                         flex-direction: column;
                         justify-content: center;
                         text-align: center;
                         left:-30px;
-                        top:35px;
                         > li {
                             padding:10px 0;
                             @include pr-r{font-size:1.5rem;}
@@ -77,6 +76,7 @@ footer {
         bottom:0; left:0;
         display: none;
         background: #fff;
+        z-index: 10;
         > ul {
             display: flex;
             justify-content: space-between;
@@ -123,8 +123,23 @@ footer.sub {
 }
 
 
+.tgnb {width: 100%; margin:20px auto;
+    ul{
+        display: flex;
+        justify-content: space-between; align-items: center;
+        border-top:1px solid #eee;
+        border-bottom:1px solid #eee;
+        height: 45px;
+        li {
+            padding: 0 20px;
+            @include pr-b{font-size:18px;}
+        }
+    }
+}
+
 @media (max-width:1200px){
     header{
+        position: fixed;
         > section{
             width: 90%;
             flex-direction: column;
@@ -136,10 +151,9 @@ footer.sub {
                 }
             }
         }
-        
-    }
-    footer {
-        width: 90%;
+        &.sub{
+            position: sticky;
+        }
     }
 }
 
@@ -156,6 +170,10 @@ footer.sub {
     footer{
         .gnb{
             display: block;
+            z-index: 10;
+        }
+        &.sub::before{
+            display: none;
         }
     }
 }
@@ -169,3 +187,4 @@ footer.sub {
 
 
 @import './scss/_write';
+@import './scss/_detail';

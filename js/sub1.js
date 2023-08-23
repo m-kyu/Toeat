@@ -6,6 +6,7 @@ const inner = document.querySelector('.sub1 ul');
 pop = document.querySelector('.sub1 ');
 let tag = '', images = '';
 
+
 fetch('./js/data/recommend.json')
     .then(res => res.json())
     .then(data => {
@@ -57,7 +58,6 @@ function slide() {
     });
 }
 
-
 // popup
 function popupData(d) {
     let tag1 = '';
@@ -66,6 +66,8 @@ function popupData(d) {
         exPopup = document.querySelector('.sub1 .popup'),
         exPopup1 = document.querySelector('.sub1 .popup .popup1');
 
+console.log(allList);
+        
 
     aList.forEach(function (v, k) {
         v.onclick = function () {
@@ -75,11 +77,11 @@ function popupData(d) {
             fetch('./js/data/md.json')
                 .then((res) => res.json())
                 .then(({list}) => {
-                    list.forEach((md) => {
+                    list.forEach((md,k) => {
                         for (let i = 0; i < code_arr.length; i++) {
                             if (code_arr[i] == md.code) {
                                 bb += `
-                                    <figure>
+                                    <figure onclick="detail(${k})">
                                         <p><img src="${md.images}"></p>
                                         <figurecaption>
                                         ${md.name}
@@ -92,21 +94,35 @@ function popupData(d) {
 
                     exPopup.style = 'display:flex';
                     tag1 = `
+                            <i class="fa-sharp fa-solid fa-x" onclick="ppp()"></i>
                             <p>${d[k].title}</p>
                             <p>${d[k].content}</p>
                             <div>${bb}</div>                        
                     `;
                     exPopup1.innerHTML = tag1;
-
+                    
                 })
-        }
-    })
-
+            }
+        })
+    
     exPopup.onclick = function () {
         if (event.target.className == 'popup') {
             exPopup.style = 'display:none';
         }
     }
+
 }
+
+function ppp(){
+    const exPopup = document.querySelector('.sub1 .popup')
+    exPopup.style = 'display:none';
+}
+
+
+function detail(k){
+    localStorage.setItem("pagecode",k);
+    location.href='./detail.html';
+}
+
 
 

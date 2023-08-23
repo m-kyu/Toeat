@@ -1,5 +1,6 @@
 main.wr{
-
+    z-index:5;
+    position: relative;
     margin-bottom:80px;
     .write_title{
         margin-top: 200px;
@@ -100,4 +101,15 @@ main.wr{
         }
     }
         }
+    }
+
+
+
+    @media (max-width:1200px){
+        main.wr .write_title, main.wr .write_box { width:90%;}
+    }
+
+    @media (max-width:480px) {
+        main.wr .write_box form .heart { flex-direction: column;}
+        main.wr .write_box form .heart p{font-size:14px;}
     }

@@ -35,6 +35,10 @@ fetch("./js/data/md.json")
                 $(".column").eq(1).find("div").eq(5).text(list[ranNum].category)
                 $(".column").eq(1).find("div").eq(6).text(list[ranNum].menus[0])
                 checkCode();
+                $(".detaild").on('click',()=>{
+                    localStorage.setItem("pagecode",ranNum);
+                    location.href='./detail.html';
+                })
             })
 
 const canvas = document.querySelector('canvas'), ctx = canvas.getContext('2d'), dragBox = document.querySelector('.main > article');
@@ -130,6 +134,7 @@ canvas.onclick = function(event){
                 tag += tag_li;
                 tag += `</ul>`;
                 list_html.innerHTML = tag;
+                list_html.classList.add("active");
 
                 let ca = new Set(categorys);
                 let ca_arr = [...ca];
@@ -138,7 +143,6 @@ canvas.onclick = function(event){
                 }
                 $(".eat_title").find('span').html(caBtn)
             })
-
         } 
     });
 }
@@ -146,10 +150,11 @@ canvas.onclick = function(event){
 let newTage = '';
 function newPop(e){
     const list_html = document.querySelector('.store')
+    list_html.classList.remove('active');
     fetch("./js/data/md.json")
             .then((data) => data.json())
             .then(({ list })=>{
-                list.forEach((data)=>{
+                list.forEach((data,k)=>{
                     if (data.code == e) {
                         let url=``;
                         if(data.booking == '') {
@@ -192,16 +197,22 @@ function newPop(e){
                             <div class="padding">
                                 <div class="row look-detail2">
                                     <div><img src="./images/main-img/icons/map.png" alt=""></div>
-                                    <div>자세히 보기</div>
+                                    <div onclick="detail(${k})">자세히 보기</div>
                                 </div>
                             </div>
                         `;
                     }
+                
                 })
                 checkCode()
             })
 }
 
+
+function detail(k){
+        localStorage.setItem("pagecode",k);
+        location.href='./detail.html';
+}
 
 let mov=false;
 canvas.addEventListener( "mousedown", (e)=>{
@@ -228,7 +239,39 @@ function moves(x,y){
             let my = e.clientY - y;
             let marginLeft = thisLeft + mx;
             let marginTop = thisTop + my;
-            canvas.style=`margin-left:${marginLeft}px; margin-top:${marginTop}px; z-index:1000;`
+            canvas.style=`margin-left:${marginLeft}px; margin-top:${marginTop}px;`
+        } else {
+            canvas.style.zIndex = 0;
+        }
+    })   
+}
+
+let mov2=false;
+canvas.addEventListener( "touchstart", (e)=>{
+        let x = e.touches[0].clientX;
+        let y = e.touches[0].clientY;
+        mov2 = true;
+        moves2(x,y)
+});
+canvas.addEventListener( "touchend", (e)=>{
+    let x = e.touches[0].clientX;
+    let y = e.touches[0].clientY;
+    mov2 = false; 
+    moves2(x,y)
+});
+
+
+
+function moves2(x,y){
+    let thisLeft = Number(window.getComputedStyle(canvas).getPropertyValue('margin-left').replace(/px/g, '') )
+    let thisTop = Number(window.getComputedStyle(canvas).getPropertyValue('margin-top').replace(/px/g, '') )
+    canvas.addEventListener( "touchmove", (e)=>{
+        if (mov2) {
+            let mx = e.touches[0].clientX - x;
+            let my = e.touches[0].clientY - y;
+            let marginLeft = thisLeft + mx;
+            let marginTop = thisTop + my;
+            canvas.style=`margin-left:${marginLeft}px; margin-top:${marginTop}px;`
         } else {
             canvas.style.zIndex = 0;
         }
