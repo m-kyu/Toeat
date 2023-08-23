@@ -123,7 +123,8 @@ footer.sub {
 }
 
 
-.tgnb {width: 100%; margin:20px auto;
+.tgnb {
+    width: 1200px; margin:20px auto;
     ul{
         display: flex;
         justify-content: space-between; align-items: center;
@@ -138,6 +139,7 @@ footer.sub {
 }
 
 @media (max-width:1200px){
+    .tgnb {width: 100%;}
     header{
         position: fixed;
         > section{

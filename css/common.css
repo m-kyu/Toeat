@@ -169,7 +169,7 @@ footer.sub::after {
 }
 
 .tgnb {
-  width: 100%;
+  width: 1200px;
   margin: 20px auto;
 }
 .tgnb ul {
@@ -188,6 +188,9 @@ footer.sub::after {
 }
 
 @media (max-width: 1200px) {
+  .tgnb {
+    width: 100%;
+  }
   header {
     position: fixed;
   }
@@ -589,7 +592,7 @@ footer.sub::after {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 120px;
+    bottom: 150px;
     margin: 0 auto;
   }
   .main > article .store.flex {
