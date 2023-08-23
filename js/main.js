@@ -83,12 +83,12 @@ canvas.onclick = function(event){
     ico_xy.forEach((v,k) => {
        let pos ={sx:v.x, dx:v.x + v.w, sy:v.y, dy:v.y + v.h};
        if(pos.sx < x && pos.dx > x && pos.sy < y && pos.dy > y){
-        
+        $(".main article button").show();
         $(list_html).addClass('flex')
         list_html.innerHTML = '';
         
             tag +=`
-            <button onclick="mpopclose()">X</button>
+            
                 <div class="eat_title">
                     <figure>
                         <p><img src="./images/main-img/logo-orange.png" alt="logo"></p>
@@ -148,7 +148,6 @@ function newPop(e){
                             url = `<a href="${data.booking}" target="_blank">네이버 예약</a>`
                         }
                         list_html.innerHTML = `
-                            <button onclick="mpopclose()">X</button>
                             <div class="store-img">
                                 <figure>
                                     <img src="${data.images}" alt="">
@@ -301,4 +300,6 @@ function checkCode(){
 
 function mpopclose(){
     $('.store').removeClass('flex')
+    
+    $(".main article button").hide();
 }
