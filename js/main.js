@@ -83,7 +83,7 @@ canvas.onclick = function(event){
     ico_xy.forEach((v,k) => {
        let pos ={sx:v.x, dx:v.x + v.w, sy:v.y, dy:v.y + v.h};
        if(pos.sx < x && pos.dx > x && pos.sy < y && pos.dy > y){
-        $(".main article button").show();
+        if($(window).width() < 481) $(".main article button").show();
         $(list_html).addClass('flex')
         list_html.innerHTML = '';
         
@@ -121,6 +121,13 @@ canvas.onclick = function(event){
                 list_html.innerHTML = tag;
                 list_html.classList.add("active");
 
+                if($(window).width() < 481) {
+                     let btnTop = $(".store").offset().top - 50;
+                     $(".main article > button").css("top", btnTop);
+                }
+
+                 
+
                 let ca = new Set(categorys);
                 let ca_arr = [...ca];
                 for(let i=0; i < ca_arr.length; i++){
@@ -152,6 +159,12 @@ function newPop(e){
                                 <figure>
                                     <img src="${data.images}" alt="">
                                 </figure>
+                                <div class="padding">
+                                    <div class="row look-detail1">
+                                        <div><img src="./images/main-img/icons/map.png" alt=""></div>
+                                        <div class="detaild">자세히 보기</div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="padding">
                                 <div class="store-name"><span>${data.name}</span><p class="code_insert" onClick="code_in(${data.code})" data-code='${data.code}'></p></div>
@@ -303,3 +316,4 @@ function mpopclose(){
     
     $(".main article button").hide();
 }
+
