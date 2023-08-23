@@ -94,7 +94,6 @@ console.log(allList);
 
                     exPopup.style = 'display:flex';
                     tag1 = `
-                            <i class="fa-sharp fa-solid fa-x" onclick="ppp()"></i>
                             <p>${d[k].title}</p>
                             <p>${d[k].content}</p>
                             <div>${bb}</div>                        

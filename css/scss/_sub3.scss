@@ -1,6 +1,6 @@
 
 main.sub3{
-    margin-top: 50px; margin-bottom:70px;
+    margin-top: 50px; margin-bottom:150px;
     width: 100%;
     position: relative;
     z-index: 5;
@@ -10,6 +10,7 @@ main.sub3{
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin-bottom: 20px;
 
     .title{
@@ -102,7 +103,9 @@ main.sub3{
         }
     }
     > div.k {
-        width: 30%; margin:0 auto;
+        
+    text-align: center;
+    width: 50%; margin:0 auto;
         .morebtn{
             @include pr-r{font-size:16px;}
             
@@ -139,6 +142,8 @@ main.sub3{
             background-color: white;
             border-radius: 20px;
             padding: 30px;
+            max-height: 450px;
+            overflow-y: auto;
 
         }
         .matname{ 
@@ -204,7 +209,7 @@ main.sub3{
 @media (max-width:1200px){
     main.sub3{
         width: 90%;
-        margin: 0 auto;
+        margin: 0 auto 150px;
         .sub_3_main1{
         width: 100%;
     }

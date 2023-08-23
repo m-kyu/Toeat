@@ -324,7 +324,9 @@
             }
             .store{
                 width: 400px;
-                height: 340px;
+                height: 200px;
+                overflow-y: auto;
+                overflow-x: hidden;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
