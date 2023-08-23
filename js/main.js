@@ -1,19 +1,3 @@
-
-function checkCode(){
-    let wr_code = localStorage.getItem("w_code");
-    if (wr_code){
-        wr_arr = wr_code.split(',');
-        let setData = $(".code_insert").data('code');
-        for(let i=0; i<wr_arr.length; i++){
-            if(wr_arr[i] == setData){
-                $(".code_insert").addClass('active')
-            } else {
-                $(".code_insert").removeClass('active')
-            }
-        }
-    }
-}
-
 let ranNum = Math.floor(Math.random()*627);
 fetch("./js/data/md.json")
             .then((data) => data.json())
@@ -25,8 +9,7 @@ fetch("./js/data/md.json")
                     url = `<a href="${list[ranNum].booking}" target="_blank">네이버 예약</a>`
                 }
                 $(".store-img figure > img").attr('src',list[ranNum].images)
-                $(".store-img figure > figcaption > p").attr('data-code',list[ranNum].code)
-                $(".store-name").text(list[ranNum].name)
+                $(".store-name").html(`<span>${list[ranNum].name}</span><p class="code_insert" onClick="code_in(${list[ranNum].code})" data-code='${list[ranNum].code}'></p>`)
                 $(".column").eq(1).find("div").eq(0).text(list[ranNum].adress)
                 $(".column").eq(1).find("div").eq(1).text(list[ranNum].phone ? list[ranNum].phone  : '등록된 전화번호가 없습니다.')
                 $(".column").eq(1).find("div").eq(2).text(list[ranNum].time ? list[ranNum].time.substr(0,28)+"..."  : '등록된 시간이 없습니다.' )
@@ -94,16 +77,18 @@ canvas.onclick = function(event){
     const y = event.clientY - ctx.canvas.offsetTop;
 
     const list_html = document.querySelector('.store')
-    
     let tag ='',tag_li='',categorys=[],caBtn='';
     
 
     ico_xy.forEach((v,k) => {
        let pos ={sx:v.x, dx:v.x + v.w, sy:v.y, dy:v.y + v.h};
        if(pos.sx < x && pos.dx > x && pos.sy < y && pos.dy > y){
+        
+        $(list_html).addClass('flex')
         list_html.innerHTML = '';
         
             tag +=`
+            <button onclick="mpopclose()">X</button>
                 <div class="eat_title">
                     <figure>
                         <p><img src="./images/main-img/logo-orange.png" alt="logo"></p>
@@ -163,16 +148,14 @@ function newPop(e){
                             url = `<a href="${data.booking}" target="_blank">네이버 예약</a>`
                         }
                         list_html.innerHTML = `
+                            <button onclick="mpopclose()">X</button>
                             <div class="store-img">
                                 <figure>
                                     <img src="${data.images}" alt="">
-                                    <figcaption>
-                                        <p class="code_insert" onClick="code_in(${data.code})" data-code="${data.code}"></p>
-                                    </figcaption>
                                 </figure>
                             </div>
                             <div class="padding">
-                                <div class="store-name">${data.name}</div>
+                                <div class="store-name"><span>${data.name}</span><p class="code_insert" onClick="code_in(${data.code})" data-code='${data.code}'></p></div>
                                 <div class="row">
                                     <div class="column">
                                         <div><img class="icon" src="./images/main-img/icons/location.png" alt=""></div>
@@ -281,7 +264,6 @@ function moves2(x,y){
 
 function code_in(e){
     let w_codes = localStorage.getItem("w_code")
-    
     if(!w_codes){
         localStorage.setItem("w_code",e)
     } else {
@@ -298,22 +280,25 @@ function code_in(e){
     }    
     checkCode()
 }
-$(".code_insert").on('click',function(){
-    let w_codes = localStorage.getItem("w_code")
-    
-    if(!w_codes){
-        localStorage.setItem("w_code",$(this).data('code'))
-    } else {
-        let w_arr = w_codes.split(',')
-        for(let i=0; i<w_arr.length; i++){
-            if(w_arr[i] != $(this).data('code')){
-                let codes = w_codes + "," + $(this).data('code')
-                localStorage.setItem("w_code", codes)
+
+
+
+function checkCode(){
+    let wr_code = localStorage.getItem("w_code");
+    let setData = $(".code_insert").data('code');
+    if (wr_code){
+        wr_arr = wr_code.split(',');
+        for(let i=0; i<wr_arr.length; i++){
+            if(wr_arr[i] == setData){
+                $(".code_insert").addClass('active')
             } else {
-                localStorage.setItem("w_code", w_arr.filter(v => v != $(this).data('code')))
-                checkCode()
+                $(".code_insert").removeClass('active')
             }
         }
-    }    
-    checkCode()
-})
+    }
+}
+
+
+function mpopclose(){
+    $('.store').removeClass('flex')
+}

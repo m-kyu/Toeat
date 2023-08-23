@@ -316,6 +316,16 @@ footer.sub::after {
   right: 18%;
   z-index: 5;
 }
+.main > article .store > button {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  font-size: 22px;
+  border: 0;
+  background: transparent;
+  font-weight: 700;
+  z-index: 10;
+}
 .main > article .store .eat_title figure {
   display: flex;
   flex-wrap: nowrap;
@@ -386,26 +396,27 @@ footer.sub::after {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.main > article .store .store-img figure figcaption p {
-  position: absolute;
-  right: 10px;
-  bottom: 0;
-  color: #000;
-}
-.main > article .store .store-img figure figcaption p::after {
-  content: "favorite";
-  font-size: 30px;
-  overflow: hidden;
-  font-family: "Material Symbols Outlined";
-}
-.main > article .store .store-img figure figcaption p.active::after {
-  color: red;
-}
 .main > article .store .store-name {
   font-family: "pretendard";
   font-weight: 700;
   font-size: 22px;
   margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main > article .store .store-name p {
+  color: #000;
+  margin: 0;
+}
+.main > article .store .store-name p::after {
+  content: "favorite";
+  font-size: 30px;
+  overflow: hidden;
+  font-family: "Material Symbols Outlined";
+}
+.main > article .store .store-name p.active::after {
+  color: red;
 }
 .main > article .store .look-detail1 {
   color: #BB4F59;
@@ -552,11 +563,12 @@ footer.sub::after {
 @media (max-width: 480px) {
   .main > article canvas {
     margin-left: -136.609px;
-    margin-top: -263px;
     transform: scale(0.7);
-  }
-  .row {
-    display: none;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .char1, .char2, .char3, .char4, .char7, .char8 {
     display: none;
@@ -565,11 +577,11 @@ footer.sub::after {
     display: none;
   }
   .main > article .store {
+    display: none;
     width: 400px;
-    height: 300px;
+    height: 70vh;
     overflow-y: auto;
     overflow-x: hidden;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: absolute;
@@ -578,12 +590,14 @@ footer.sub::after {
     bottom: 120px;
     margin: 0 auto;
   }
+  .main > article .store.flex {
+    display: flex;
+  }
   .main > article .store.active {
     flex-direction: column;
   }
   .main > article .store .store-img {
     width: 100%;
-    margin-right: 20px;
   }
   .main > article .store .store-img > figure {
     height: 200px;
@@ -857,7 +871,7 @@ main.sub2 .stores .con .on2 {
   width: 24%;
   height: 100%;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid #eee;
   margin: 6px 0;
   border-radius: 20px;
 }
@@ -889,7 +903,7 @@ main.sub2 .stores .con .on2 figure img {
   width: 100%;
   height: 250px;
   margin-bottom: 10px;
-  border-radius: 20px;
+  border-radius: 20px 20px 0 0;
   filter: brightness(0.7);
 }
 main.sub2 .stores .con .on2 p {
@@ -951,7 +965,6 @@ main.sub2 .stores .con .on2 p {
   main.sub2 .stores .con .on2 {
     width: 49%;
     text-align: center;
-    border: 1px solid black;
     margin: 6px 0;
     border-radius: 20px;
   }
@@ -983,7 +996,6 @@ main.sub2 .stores .con .on2 p {
     width: 100%;
     height: 250px;
     margin-bottom: 10px;
-    border-radius: 20px;
     filter: brightness(0.7);
   }
   main.sub2 .stores .con .on2 p {
@@ -1045,7 +1057,6 @@ main.sub2 .stores .con .on2 p {
   main.sub2 .stores .con .on2 {
     width: 100%;
     text-align: center;
-    border: 1px solid black;
     margin: 6px 0;
     border-radius: 20px;
   }
@@ -1077,7 +1088,6 @@ main.sub2 .stores .con .on2 p {
     width: 100%;
     height: 150px;
     margin-bottom: 10px;
-    border-radius: 20px;
     filter: brightness(0.7);
     -o-object-fit: cover;
        object-fit: cover;
@@ -1365,14 +1375,16 @@ main.sub3 .r_pop .popbtn button {
   width: 1200px;
   margin: 0px auto;
 }
-.sub4 article h2 {
+.sub4 article .search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 45px;
+}
+.sub4 article .search h2 {
   font-family: "pretendard";
   font-weight: 700;
   font-size: 25px;
-}
-.sub4 article .search {
-  text-align: right;
-  margin-bottom: 45px;
 }
 .sub4 article .search label {
   position: relative;
@@ -1389,7 +1401,7 @@ main.sub3 .r_pop .popbtn button {
 }
 .sub4 article .search label button {
   position: absolute;
-  top: 2px;
+  top: 10px;
   right: 20px;
   padding: 0;
   border: none;

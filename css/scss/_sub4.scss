@@ -3,14 +3,13 @@
   article{
     width: 1200px;
     margin:0px auto;
-    h2{
-      @include pr-b{
-        font-size: 25px;
-      }
-    }
     .search{
-      text-align: right;
+      display: flex;
+      justify-content: space-between; align-items: center;
       margin-bottom:45px;
+        h2{
+          @include pr-b{font-size: 25px;}
+        }
       label{
         position:relative;
         input{
@@ -25,7 +24,7 @@
         }
         button{
           position: absolute;
-          top:2px;
+          top:10px;
           right:20px;
           padding:0;
           border:none;
