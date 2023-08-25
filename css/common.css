@@ -337,7 +337,6 @@ footer.sub::after {
   flex-direction: column;
   justify-content: space-between;
   position: absolute;
-  right: 18%;
   z-index: 5;
 }
 .main > article .store .eat_title figure {
@@ -508,7 +507,7 @@ footer.sub::after {
   z-index: 3;
 }
 
-@media screen and (min-width: 481px) and (max-width: 1200px) {
+@media (max-width: 1200px) {
   .char1, .char2, .char3, .char4, .char7, .char8 {
     display: none;
   }
@@ -716,7 +715,7 @@ footer.sub::after {
 }
 .sub1 .popup .popup1 {
   width: 70%;
-  height: 90vh;
+  height: 80vh;
   border-radius: 20px;
   background-color: white;
   padding: 30px 120px 30px 120px;
@@ -763,6 +762,7 @@ footer.sub::after {
 .sub1 .popup .popup1 div figure {
   text-align: center;
   width: 46%;
+  cursor: pointer;
 }
 .sub1 .popup .popup1 div figure p {
   width: 100%;
@@ -852,7 +852,10 @@ footer.sub::after {
   }
   .sub1 .popup .popup1 {
     width: 90%;
-    padding: 60px 20px 85px 20px;
+    padding: 30px 20px 80px 20px;
+    height: 78vh;
+    margin-bottom: 24%;
+    overflow: hidden;
   }
   .sub1 .popup .popup1 p:nth-of-type(1) {
     font-family: "pretendard";
@@ -863,6 +866,14 @@ footer.sub::after {
     font-family: "pretendard";
     font-weight: 500;
     font-size: 13px;
+  }
+  .sub1 .popup .popup1 div {
+    display: block;
+    margin-bottom: 5%;
+    max-height: 65%;
+  }
+  .sub1 .popup .popup1 div figure {
+    width: 100%;
   }
 }
 main.sub2 {
@@ -1288,7 +1299,23 @@ main.sub3 .r_pop {
   display: none;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   z-index: 10;
+}
+main.sub3 .r_pop .popbtn {
+  text-align: center;
+}
+main.sub3 .r_pop .popbtn button {
+  font-family: "pretendard";
+  font-weight: 500;
+  font-size: 30px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: transparent;
+  margin: 0 10px;
+  color: #fff;
+  cursor: pointer;
 }
 main.sub3 .r_pop.active {
   display: flex;
@@ -1296,13 +1323,29 @@ main.sub3 .r_pop.active {
 main.sub3 .r_pop .r_pop1 {
   width: 30%;
   margin: 0px auto;
-  position: fixed;
   z-index: 10;
   background-color: white;
   border-radius: 20px;
   padding: 30px;
   max-height: 450px;
+}
+main.sub3 .r_pop .r_pop1 > div {
   overflow-y: auto;
+  max-height: 390px;
+}
+main.sub3 .r_pop .r_pop1 > div::-webkit-scrollbar {
+  width: 3px;
+  margin-right: 50px;
+  height: 80vh;
+}
+main.sub3 .r_pop .r_pop1 > div::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+main.sub3 .r_pop .r_pop1 > div::-webkit-scrollbar-track {
+  background-color: #eee;
+}
+main.sub3 .r_pop .r_pop1 > div > * {
+  padding-right: 10px;
 }
 main.sub3 .r_pop .matname {
   font-family: "pretendard";
@@ -1347,21 +1390,6 @@ main.sub3 .r_pop .say {
   font-size: 16px;
   text-align: center;
 }
-main.sub3 .r_pop .popbtn {
-  text-align: center;
-}
-main.sub3 .r_pop .popbtn button {
-  font-family: "pretendard";
-  font-weight: 500;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  background: #eee;
-  margin: 0 10px;
-  color: black;
-  cursor: pointer;
-}
 
 @media (max-width: 1200px) {
   main.sub3 {
@@ -1390,7 +1418,7 @@ main.sub3 .r_pop .popbtn button {
     height: 28px;
   }
   main.sub3 .sub_3_main2 .star {
-    width: 100%;
+    width: 30%;
   }
   main.sub3 .sub_3_main2 .morebtn {
     padding: 10px 20px;
@@ -1973,13 +2001,13 @@ main.wr .write_box form > div > div button {
 }
 .detail {
   text-align: center;
-  width: 870px;
+  width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
 }
 
 .detail-p {
-  width: 870px;
+  width: 1200px;
   margin-bottom: 150px;
 }
 .detail-p .logo {

@@ -1,3 +1,4 @@
+
 let ranNum = Math.floor(Math.random()*627);
 fetch("./js/data/md.json")
             .then((data) => data.json())

@@ -131,20 +131,46 @@ main.sub3{
         display: none;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         z-index: 10;
+        
+        .popbtn{
+            text-align: center;
+            button{
+                @include pr-r{font-size:30px;}
+                padding: 10px 20px;
+                border: none;
+                border-radius: 20px;
+                background: transparent;
+                margin: 0 10px;
+                color:#fff;
+                cursor: pointer;
+            }
+        }
         &.active{
             display: flex;
         }
         .r_pop1{
             width: 30%; 
             margin:0px auto;
-            position: fixed;
             z-index: 10;
             background-color: white;
             border-radius: 20px;
             padding: 30px;
             max-height: 450px;
-            overflow-y: auto;
+            
+            > div {
+                overflow-y: auto;
+                max-height: 390px;
+            
+                &::-webkit-scrollbar {width: 3px; margin-right:50px; height: 80vh; }
+                &::-webkit-scrollbar-thumb { background-color: #000;}
+                &::-webkit-scrollbar-track { background-color: #eee;}
+                & > * {
+                    padding-right:10px;
+                }
+            }
+            
 
         }
         .matname{ 
@@ -191,19 +217,6 @@ main.sub3{
                     @include pr-r{font-size:16px;}
                     text-align: center;
                 }
-        .popbtn{
-            text-align: center;
-            button{
-                @include pr-r{font-size:16px;}
-                padding: 10px 20px;
-                border: none;
-                border-radius: 20px;
-                background: #eee;
-                margin: 0 10px;
-                color:black;
-                cursor: pointer;
-            }
-        }
     }
     }
 
@@ -232,7 +245,7 @@ main.sub3{
             }
         }
     .star{
-        width: 100%;
+        width: 30%;
     }
     
     .morebtn{

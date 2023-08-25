@@ -11,6 +11,7 @@ function pop(e){
         $(".r_pop").eq(e).addClass('active');
         pop_no = e;
     }
+    
 }
 function dataSet(cnts,maxCnts){
     fetch('./js/data/seoulmat.json')
@@ -29,12 +30,14 @@ function dataSet(cnts,maxCnts){
             
             tag += `
                 <div class="r_pop">
+                <p class="popbtn"><button>X</button></p>
                     <div class = "r_pop1">
-                    <div class="matname"><p></p><span><img src="./images/main-img/logo-orange.png" alt=""></span></div>
-                    <div class="img"><img src="${review[i].images}" alt=""></div>
-                    <div class="star"><img src="./images/sub_3/star${review[i].start}.png" alt=""></div>
-                    <div class="say"><p>${review[i].content}</p></div>
-                    <p class="popbtn"><button>닫기</button></p>
+                        <div>
+                            <div class="matname"><p></p><span><img src="./images/main-img/logo-orange.png" alt=""></span></div>
+                            <div class="img"><img src="${review[i].images}" alt=""></div>
+                            <div class="star"><img src="./images/sub_3/star${review[i].start}.png" alt=""></div>
+                            <div class="say"><p>${review[i].content}</p></div>
+                        </div>
                     </div>
                 </div>
             `
@@ -59,7 +62,9 @@ function dataSet(cnts,maxCnts){
                             localStorage.setItem("pagecode",k)
                             location.href='./detail.html';
                         })
-                        $(".popbtn > button").click(function(){$(".r_pop").removeClass('active');});
+                        $(".popbtn > button").click(function(){
+                            $(".r_pop").removeClass('active');
+                        });
                     }
                 })      
             })
@@ -70,7 +75,6 @@ function dataSet(cnts,maxCnts){
 dataSet(cnt,maxCnt);
 
 function more(){
-    console.log(cnt,maxCnt)
     cnt = maxCnt;
     maxCnt += 10;
     dataSet(cnt,maxCnt);

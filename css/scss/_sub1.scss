@@ -79,14 +79,15 @@
       font-size: 50px;
       cursor: pointer;
     }
+
     .popup1 {
       width: 70%;
-      height: 90vh;
+      height: 80vh;
       border-radius: 20px;
       background-color: white;
       padding: 30px 120px 30px 120px;
-      
-      
+
+
 
       p {
         text-align: center;
@@ -129,37 +130,38 @@
 
         &::-webkit-scrollbar-thumb:hover {
           background-color: rgba(0, 0, 0, 0.6);
-          
+
         }
 
-          &::-webkit-scrollbar-track {
-            background-color: transparent;
+        &::-webkit-scrollbar-track {
+          background-color: transparent;
+        }
+
+        figure {
+          text-align: center;
+          width: 46%;
+          cursor: pointer;
+
+          p {
+            width: 100%;
+
+            img {
+              height: 250px;
+              border-radius: 15px;
+            }
           }
 
-          figure {
-            text-align: center;
-            width: 46%;
-            
-            p {
-              width: 100%;
-
-              img {
-                height: 250px;
-                border-radius: 15px;
-              }
-            }
-
-            figurecaption {
-              @include pr-r {
-                font-size: 20px;
-              }
+          figurecaption {
+            @include pr-r {
+              font-size: 20px;
             }
           }
         }
       }
-
     }
+
   }
+}
 
 
 @media (max-width:1200px) {
@@ -269,7 +271,10 @@
     .popup {
       .popup1 {
         width: 90%;
-        padding: 60px 20px 85px 20px;
+        padding: 30px 20px 80px 20px;
+        height: 78vh;
+        margin-bottom: 24%;
+        overflow: hidden;
 
         p:nth-of-type(1) {
           @include pr-b {
@@ -281,6 +286,16 @@
           @include pr-r {
             font-size: 13px;
           }
+        }
+
+        div{
+          display: block;
+          margin-bottom: 5%;
+          max-height: 65%;
+
+        figure {
+          width: 100%;
+        }
         }
       }
     }

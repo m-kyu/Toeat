@@ -99,7 +99,6 @@
             flex-direction: column;
             justify-content: space-between;
             position: absolute;
-            right:18%;
             z-index: 5;
 
             .eat_title{
@@ -265,7 +264,7 @@
     }
 }
 
-@media screen and (min-width: 481px) and (max-width: 1200px) {
+@media (max-width: 1200px) {
     .char1, .char2, .char3, .char4,.char7, .char8{
         display: none;
     }
@@ -283,7 +282,7 @@
                 flex-direction: row;
                 justify-content: space-between;
                 position: absolute;
-                left: 0; right: 0;
+                left: 0; right:0;
                 bottom: 10px;
                 margin: 0 auto;
                 &.active{
@@ -348,7 +347,7 @@
                 flex-direction: column;
                 justify-content: space-between;
                 position: absolute;
-                left: 0; right: 0;
+                left: 0; right:0;
                 bottom: 150px;
                 margin: 0 auto;
                 &.flex{

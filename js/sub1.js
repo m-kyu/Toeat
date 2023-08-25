@@ -67,9 +67,6 @@ function popupData(d) {
         exPopup = document.querySelector('.sub1 .popup'),
         exPopup1 = document.querySelector('.sub1 .popup .popup1');
 
-console.log(allList);
-        
-
     aList.forEach(function (v, k) {
         v.onclick = function () {
             let tag1 = '', bb = '';
