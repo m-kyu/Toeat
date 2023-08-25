@@ -1,4 +1,5 @@
 $("header").addClass('sub')
+$("footer").addClass('sub')
 const name = document.querySelector('.rcmd>ul>li:nth-of-type(1)>label>input'),
       menu = document.querySelector('.rcmd>ul>li:nth-of-type(2)>label>input'),
       score = document.querySelector('.rcmd>ul>li:nth-of-type(3)>label>input'),

@@ -1,5 +1,6 @@
 
 $("header").addClass('sub')
+$("footer").addClass('sub')
 
 // data
 const inner = document.querySelector('.sub1 ul');

@@ -1,4 +1,5 @@
 $("header").addClass('sub')
+$("footer").addClass('sub')
 const elUl = document.querySelector('.list');
 let tag ='',cnt=0,maxCnt=10, poptag='', pop_no;
 

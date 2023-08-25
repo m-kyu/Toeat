@@ -1,8 +1,11 @@
 $("header").addClass('sub')
+$("footer").addClass('sub')
 const con = document.querySelector('.con')
 let tag ='';
 
+
 let s_arr = sessionStorage.getItem('s_code'), l_arr = localStorage.getItem('w_code');
+
 
 $(".list ul li a").each(function(k,v){
     $(this).click(function(e){
@@ -12,9 +15,11 @@ $(".list ul li a").each(function(k,v){
         $(".list ul li").eq(k).addClass('on')
         if(v.innerText == "최근 본 맛집"){
             tag ='';
+            s_arr = sessionStorage.getItem('s_code')
             list(s_arr)
         } else {
             tag ='';
+            l_arr = localStorage.getItem('w_code');
             list(l_arr)
         }
     })
@@ -32,15 +37,15 @@ function list(q) {
                 for(let i=0; i<code_arr.length; i++){
                     if(v.code == code_arr[i]){
                         tag += `
-                        <li class="on2" onclick="pageMove(${k})">
-                                <figure>
+                        <li class="on2" >
+                                <figure onclick="pageMove(${k})">
                                     <img src="${v.images}" alt="">
                                     <p class = "ad">
                                     ${v.adress}
                                     </p>
                                     <i class="fa-solid fa-location-dot"></i>
                                 </figure>
-                                    <b>${v.name}</b>
+                                    <b><span onclick="pageMove(${k})">${v.name}</span><span><i class="fa fa-heart" onclick="checkfav(${v.code})" data-code="${v.code}" aria-hidden="true"></i></span></b>
                                     <p>${v.time}</p>
                                     <p>${v.phone}</p>
                         </li>
@@ -52,6 +57,7 @@ function list(q) {
             
         })
         con.innerHTML = tag;
+        fav_icon();
     })
 }
 
@@ -63,3 +69,39 @@ function pageMove(e){
 }
 
 
+function fav_icon(){
+    const findLi = document.querySelectorAll(".on2");
+
+    findLi.forEach(function(v,k){
+        const w_code = localStorage.getItem("w_code");
+        let w_arr = w_code.split(',');
+        let thisCode = $(v).find('b span > i').data('code');
+        console.log(v)
+        
+        for (let i=0; i<w_arr.length; i++){
+            if(w_arr[i] == thisCode){
+                $(v).addClass('active')
+                return false;
+            } else {
+                $(v).removeClass('active')
+            }
+        }
+
+    }) 
+}
+
+
+function checkfav(e){
+    const w_code = localStorage.getItem("w_code");
+    let w_arr = w_code.split(',');
+
+    for(let i=0; i<w_arr.length; i++){
+        if(w_arr[i] != e){
+            let codes = w_arr + "," + e
+            localStorage.setItem("w_code", codes)
+        } else {
+            localStorage.setItem("w_code", w_arr.filter(v => v != e));
+        }
+    }
+    fav_icon()
+}

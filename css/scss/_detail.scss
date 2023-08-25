@@ -4,7 +4,8 @@
 .detail{
     text-align: center;
     width: 870px;
-    margin: 0 auto
+    margin: 0 auto;
+    min-height: 100vh;
 }
 .detail-p{
     @include wid();
@@ -56,6 +57,14 @@
         i{
             padding: 20px;
             font-size: 50px;
+        }
+        &.fav{
+            bottom:220px;
+            &.active{
+                background-color: #fff;
+                border: 1px solid #eee;
+                i {color:red}
+            } 
         }
     }
 }

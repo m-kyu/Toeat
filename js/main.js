@@ -9,7 +9,7 @@ fetch("./js/data/md.json")
                     url = `<a href="${list[ranNum].booking}" target="_blank">네이버 예약</a>`
                 }
                 $(".store-img figure > img").attr('src',list[ranNum].images)
-                $(".store-name").html(`<span>${list[ranNum].name}</span><p class="code_insert" onClick="code_in(${list[ranNum].code})" data-code='${list[ranNum].code}'></p>`)
+                $(".store-name").html(`<span>${list[ranNum].name}</span><p class="code_insert" onClick="code_in(${list[ranNum].code})" data-code='${list[ranNum].code}'><i class="fa fa-heart" aria-hidden="true"></i></p>`)
                 $(".column").eq(1).find("div").eq(0).text(list[ranNum].adress)
                 $(".column").eq(1).find("div").eq(1).text(list[ranNum].phone ? list[ranNum].phone  : '등록된 전화번호가 없습니다.')
                 $(".column").eq(1).find("div").eq(2).text(list[ranNum].time ? list[ranNum].time.substr(0,28)+"..."  : '등록된 시간이 없습니다.' )
@@ -167,7 +167,7 @@ function newPop(e){
                                 </div>
                             </div>
                             <div class="padding">
-                                <div class="store-name"><span>${data.name}</span><p class="code_insert" onClick="code_in(${data.code})" data-code='${data.code}'></p></div>
+                                <div class="store-name"><span>${data.name}</span><p class="code_insert" onClick="code_in(${data.code})" data-code='${data.code}'><i class="fa fa-heart" aria-hidden="true"></i></p></div>
                                 <div class="row">
                                     <div class="column">
                                         <div><img class="icon" src="./images/main-img/icons/location.png" alt=""></div>

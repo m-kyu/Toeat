@@ -1,4 +1,5 @@
 $("header").addClass('sub')
+$("footer").addClass('sub')
 const elUl = document.querySelector('.all_ul'),
       elBtn = document.querySelector('button'),
       elInput = document.querySelector('input')

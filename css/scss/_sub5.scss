@@ -1,8 +1,9 @@
 .sub5{
-  width:90%;
+  width:100%;
   position: relative;
   z-index: 5;
   margin:0 auto 150px;
+  min-height: 100vh;
   .sub5_img{
     figure{
       img{

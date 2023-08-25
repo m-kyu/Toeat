@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
 }
-
+.detaild, .look-detail2 > div:nth-of-type(2){cursor: pointer;}
 .column{
     display: flex;
     flex-direction: column;
@@ -168,14 +168,12 @@
                 justify-content: space-between;
                 align-items: center;
                 p{
-                    color:#000; margin:0;
-                    &::after{
-                        content: 'favorite';
+                    margin:0;
+                    > i {
+                        color:#b3b3b3;
                         font-size: 30px;
-                        overflow: hidden;
-                        font-family: 'Material Symbols Outlined';
                     }
-                    &.active::after{color:red;}
+                    &.active i {color:red;}
                 }
             }
             

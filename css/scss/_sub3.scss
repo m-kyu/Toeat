@@ -4,7 +4,8 @@ main.sub3{
     width: 100%;
     position: relative;
     z-index: 5;
-
+    min-height: 100vh;
+    
     .sub_3_main1{
         width: 1200px;
         margin: 0 auto;
@@ -58,7 +59,7 @@ main.sub3{
             border-radius: 20px;
             padding: 20px 30px;
             background-color: white;
-
+            cursor: pointer;
             .matname{ 
                 @include pr-b{font-size:16px;}
                 display: flex;
@@ -108,7 +109,7 @@ main.sub3{
     width: 50%; margin:0 auto;
         .morebtn{
             @include pr-r{font-size:16px;}
-            
+            cursor: pointer;
             padding: 10px 20px;
             border: none;
             border-radius: 20px;
