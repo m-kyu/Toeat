@@ -881,7 +881,6 @@ main.sub2 {
   margin: 0px auto;
   z-index: 5;
   position: relative;
-  min-height: 100vh;
 }
 main.sub2 .list {
   width: 1200px;
@@ -902,9 +901,6 @@ main.sub2 .list .listin .on1 {
   border: 1px solid #D9D9D9;
   height: 70px;
 }
-main.sub2 .list .listin .on1:nth-of-type(1) {
-  border-right: 0;
-}
 main.sub2 .list .listin .on1 .d {
   font-family: "pretendard";
   font-weight: 700;
@@ -920,31 +916,31 @@ main.sub2 .list .listin .on1.on {
 main.sub2 .stores .con {
   width: 1200px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin: 50px 0;
 }
 main.sub2 .stores .con .on2 {
   width: 24%;
-  height: 100%;
   text-align: center;
   border: 1px solid #eee;
-  margin: 6px 0;
+  margin: 6px 6px;
   border-radius: 20px;
-  cursor: pointer;
 }
-main.sub2 .stores .con .on2.active b span > i {
+main.sub2 .stores .con .on2.active i {
   color: red;
 }
 main.sub2 .stores .con .on2 b {
+  margin: 10px 17px 10px 15px;
   font-family: "pretendard";
   font-weight: 700;
   font-size: 20px;
   display: flex;
   justify-content: space-between;
-  padding: 10px 17px 10px 15px;
+  align-items: center;
 }
-main.sub2 .stores .con .on2 b i {
+main.sub2 .stores .con .on2 b span i {
+  font-size: 30px;
   color: #b3b3b3;
 }
 main.sub2 .stores .con .on2 figure {
@@ -952,7 +948,7 @@ main.sub2 .stores .con .on2 figure {
 }
 main.sub2 .stores .con .on2 figure .ad {
   font-family: "pretendard";
-  font-weight: 700;
+  font-weight: 500;
   font-size: 16px;
   text-align: left;
   margin: 10px 17px 10px 25px;
@@ -975,10 +971,17 @@ main.sub2 .stores .con .on2 figure img {
 }
 main.sub2 .stores .con .on2 p {
   font-family: "pretendard";
-  font-weight: 700;
+  font-weight: 500;
   font-size: 16px;
   text-align: left;
   margin: 10px 17px 10px 15px;
+}
+main.sub2 .stores .text-overflow-lines {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 @media (max-width: 1200px) {
@@ -1025,7 +1028,7 @@ main.sub2 .stores .con .on2 p {
   main.sub2 .stores .con {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin: 50px 0;
   }
@@ -2014,7 +2017,7 @@ main.wr .write_box form > div > div button {
   width: 100%;
 }
 .detail-p .logo img {
-  width: 150px;
+  width: 110px;
   position: relative;
   left: 0;
 }

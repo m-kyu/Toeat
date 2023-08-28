@@ -4,10 +4,10 @@ $(document).ready(function () {
 
     function hover(){
         $("header li:nth-of-type(4)").on('mouseenter',()=>{
-            $("header li:nth-of-type(4) ul").slideDown();
+            $("header li:nth-of-type(4) ul").stop().slideDown();
         })
         $("header li:nth-of-type(4)").on('mouseleave',()=>{
-            $("header li:nth-of-type(4) ul").slideUp();
+            $("header li:nth-of-type(4) ul").stop().slideUp();
         })
 
         window.addEventListener("resize", ()=>{ resize() })

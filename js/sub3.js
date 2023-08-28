@@ -5,10 +5,10 @@ let tag ='',cnt=0,maxCnt=10, poptag='', pop_no;
 
 function pop(e){
     if(e == pop_no){
-        $(".r_pop").eq(e).toggleClass('active');
+        $(".on"+e).toggleClass('active');
     } else {
-        $(".r_pop").eq(pop_no).removeClass('active');
-        $(".r_pop").eq(e).addClass('active');
+        $(".on"+pop_no).removeClass('active');
+        $(".on"+e).addClass('active');
         pop_no = e;
     }
     
@@ -29,7 +29,7 @@ function dataSet(cnts,maxCnts){
             `
             
             tag += `
-                <div class="r_pop">
+                <div class="r_pop on${i}">
                 <p class="popbtn"><button>X</button></p>
                     <div class = "r_pop1">
                         <div>
@@ -93,7 +93,6 @@ searchbtn.addEventListener('click',()=>{
 inputs.addEventListener("keyup", function (event) {
     if (event.keyCode === 13) {
        searchData(inputs.value)
-       inputs.value = ''; 
     }
 });
 
@@ -121,13 +120,15 @@ function searchData(e){
                             `
             
                             elUl.innerHTML += `
-                                <div class="r_pop">
+                                <div class="r_pop on${q}">
+                                <p class="popbtn"><button>X</button></p>
                                     <div class = "r_pop1">
-                                    <div class="matname"><p>${v.name}</p><span><img src="./images/main-img/logo-orange.png" alt=""></span></div>
-                                    <div class="img"><img src="${d.images}" alt=""></div>
-                                    <div class="star"><img src="./images/sub_3/star${d.start}.png" alt=""></div>
-                                    <div class="say"><p>${d.content}</p></div>
-                                    <p class="popbtn"><button>닫기</button></p>
+                                        <div>
+                                            <div class="matname"><p>${v.name}</p><span><img src="./images/main-img/logo-orange.png" alt=""></span></div>
+                                            <div class="img"><img src="${d.images}" alt=""></div>
+                                            <div class="star"><img src="./images/sub_3/star${d.start}.png" alt=""></div>
+                                            <div class="say"><p>${d.content}</p></div>
+                                        </div>
                                     </div>
                                 </div>
                             `

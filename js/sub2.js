@@ -34,10 +34,11 @@ function list(q) {
             if(!q) { tag = ` <h2> 최근 본 목록이 없습니다. </h2> ` }
             else {
                 let code_arr = q.split(',');
+                let time = '', phone = '';
                 for(let i=0; i<code_arr.length; i++){
                     if(v.code == code_arr[i]){
-                        
-                         console.log(v.code)
+                        if(!v.time) { time = `등록된 이용시간이 없습니다.`} else { time = v.time}
+                        if(!v.phone) { phone = `등록된 업체번호가 없습니다.`} else { phone = v.phone}
                         tag += `
                         <li class="on2" >
                             <figure onclick="pageMove(${k})">
@@ -48,8 +49,8 @@ function list(q) {
                                 <i class="fa-solid fa-location-dot"></i>
                                 </figure>
                             <b><span onclick="pageMove(${k})">${v.name}</span><span><i class="fa fa-heart" onclick="checkfav(${v.code})" data-code="${v.code}" aria-hidden="true"></i></span></b>
-                            <p>${v.time}</p>
-                            <p>${v.phone}</p>
+                            <p class="text-overflow-lines">${time}</p>
+                            <p>${phone}</p>
                         </li>
                         `
                         
