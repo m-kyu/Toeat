@@ -87,6 +87,13 @@
         }
         canvas{
             margin-left:15%;
+            cursor: grab;
+            &.active{
+                cursor: grabbing;
+            }
+            &.over{
+                cursor: pointer;
+            }
         }
 
         .store{

@@ -73,6 +73,22 @@ img.addEventListener('load',()=>{
     });
 })
 
+canvas.onmousemove = function(event){
+    const x = event.clientX - ctx.canvas.offsetLeft; 
+    const y = event.clientY - ctx.canvas.offsetTop;
+
+    for(let i=0; i<ico_xy.length; i++){
+        let pos ={sx:ico_xy[i].x, dx:ico_xy[i].x + ico_xy[i].w, sy:ico_xy[i].y, dy:ico_xy[i].y + ico_xy[i].h};
+        if(pos.sx < x && pos.dx > x && pos.sy < y && pos.dy > y){
+            canvas.classList.add('over')
+            break;
+        } else {
+            canvas.classList.remove('over')
+        }
+
+    }
+}
+
 canvas.onclick = function(event){
     const x = event.clientX - ctx.canvas.offsetLeft; 
     const y = event.clientY - ctx.canvas.offsetTop;
@@ -85,7 +101,7 @@ canvas.onclick = function(event){
        let pos ={sx:v.x, dx:v.x + v.w, sy:v.y, dy:v.y + v.h};
        if(pos.sx < x && pos.dx > x && pos.sy < y && pos.dy > y){
         if($(window).width() < 481) $(".main article button").show();
-        $(list_html).addClass('flex')
+        $(list_html).addClass('flex');
         list_html.innerHTML = '';
         
             tag +=`
@@ -224,8 +240,6 @@ canvas.addEventListener( "mouseup", (e)=>{
     moves(x,y)
 });
 
-
-
 function moves(x,y){
     let thisLeft = Number(window.getComputedStyle(canvas).getPropertyValue('margin-left').replace(/px/g, '') )
     let thisTop = Number(window.getComputedStyle(canvas).getPropertyValue('margin-top').replace(/px/g, '') )
@@ -236,8 +250,6 @@ function moves(x,y){
             let marginLeft = thisLeft + mx;
             let marginTop = thisTop + my;
             canvas.style=`margin-left:${marginLeft}px; margin-top:${marginTop}px;`
-        } else {
-            canvas.style.zIndex = 0;
         }
     })   
 }

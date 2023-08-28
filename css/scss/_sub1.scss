@@ -81,27 +81,31 @@
     }
 
     .popup1 {
-      width: 70%;
+      width: 60%;
       height: 80vh;
       border-radius: 20px;
       background-color: white;
       padding: 30px 120px 30px 120px;
+      overflow: hidden;
 
-
-
-      p {
+      >p {
         text-align: center;
 
 
         &:nth-of-type(1) {
           @include pr-b {
             font-size: 25px;
+            line-height: 1.3;
+            margin: 3% auto;
           }
         }
 
         &:nth-of-type(2) {
           @include pr-r {
             font-size: 16px;
+            line-height: 1.4;
+            width: 80%;
+            margin: 2% auto;
           }
         }
       }

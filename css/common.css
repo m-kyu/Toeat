@@ -326,6 +326,13 @@ footer.sub::after {
 }
 .main > article canvas {
   margin-left: 15%;
+  cursor: grab;
+}
+.main > article canvas.active {
+  cursor: grabbing;
+}
+.main > article canvas.over {
+  cursor: pointer;
 }
 .main > article .store {
   width: 430px;
@@ -714,24 +721,30 @@ footer.sub::after {
   cursor: pointer;
 }
 .sub1 .popup .popup1 {
-  width: 70%;
+  width: 60%;
   height: 80vh;
   border-radius: 20px;
   background-color: white;
   padding: 30px 120px 30px 120px;
+  overflow: hidden;
 }
-.sub1 .popup .popup1 p {
+.sub1 .popup .popup1 > p {
   text-align: center;
 }
-.sub1 .popup .popup1 p:nth-of-type(1) {
+.sub1 .popup .popup1 > p:nth-of-type(1) {
   font-family: "pretendard";
   font-weight: 700;
   font-size: 25px;
+  line-height: 1.3;
+  margin: 3% auto;
 }
-.sub1 .popup .popup1 p:nth-of-type(2) {
+.sub1 .popup .popup1 > p:nth-of-type(2) {
   font-family: "pretendard";
   font-weight: 500;
   font-size: 16px;
+  line-height: 1.4;
+  width: 80%;
+  margin: 2% auto;
 }
 .sub1 .popup .popup1 div {
   display: flex;
