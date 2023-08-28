@@ -1,7 +1,7 @@
 $("header").addClass('sub')
 $("footer").addClass('sub')
 const elUl = document.querySelector('.d-list')
-let code='';
+let code='',time='',phone='';
 fetch('./js/data/md.json')
 .then(res=>res.json())
 .then(data=>{   
@@ -23,6 +23,8 @@ fetch('./js/data/md.json')
         location.href='./';
         return false;
     }
+    if(!item.time) { time = `등록된 이용시간이 없습니다.`} else { time = item.time}
+    if(!item.phone) { phone = `등록된 업체번호가 없습니다.`} else { phone = item.phone}
     elUl.innerHTML = `
                 <li class="d-on" data-code='${item.code}'>
                     <b>${item.name}</b>
@@ -35,8 +37,8 @@ fetch('./js/data/md.json')
                     <i class="fa-solid fa-location-dot"></i>
                         ${item.adress}
                     </p>
-                    <p>${item.phone}</p>
-                    <p>${item.time}</p>
+                    <p>${phone}</p>
+                    <p>${time}</p>
                 </li>
     `
 });
