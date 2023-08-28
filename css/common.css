@@ -891,6 +891,7 @@ footer.sub::after {
 }
 main.sub2 {
   width: 1200px;
+  min-height: 100vh;
   margin: 0px auto;
   z-index: 5;
   position: relative;
