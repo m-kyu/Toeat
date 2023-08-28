@@ -36,18 +36,20 @@ function list(q) {
                 let code_arr = q.split(',');
                 for(let i=0; i<code_arr.length; i++){
                     if(v.code == code_arr[i]){
+                        
+                         console.log(v.code)
                         tag += `
                         <li class="on2" >
-                                <figure onclick="pageMove(${k})">
-                                    <img src="${v.images}" alt="">
-                                    <p class = "ad">
+                            <figure onclick="pageMove(${k})">
+                                <img src="${v.images}" alt="">
+                                <p class = "ad">
                                     ${v.adress}
-                                    </p>
-                                    <i class="fa-solid fa-location-dot"></i>
+                                </p>
+                                <i class="fa-solid fa-location-dot"></i>
                                 </figure>
-                                    <b><span onclick="pageMove(${k})">${v.name}</span><span><i class="fa fa-heart" onclick="checkfav(${v.code})" data-code="${v.code}" aria-hidden="true"></i></span></b>
-                                    <p>${v.time}</p>
-                                    <p>${v.phone}</p>
+                            <b><span onclick="pageMove(${k})">${v.name}</span><span><i class="fa fa-heart" onclick="checkfav(${v.code})" data-code="${v.code}" aria-hidden="true"></i></span></b>
+                            <p>${v.time}</p>
+                            <p>${v.phone}</p>
                         </li>
                         `
                         
@@ -75,9 +77,7 @@ function fav_icon(){
     findLi.forEach(function(v,k){
         const w_code = localStorage.getItem("w_code");
         let w_arr = w_code.split(',');
-        let thisCode = $(v).find('b span > i').data('code');
-        console.log(v)
-        
+        let thisCode = $(v).find('b span > i').data('code');        
         for (let i=0; i<w_arr.length; i++){
             if(w_arr[i] == thisCode){
                 $(v).addClass('active')
@@ -94,7 +94,6 @@ function fav_icon(){
 function checkfav(e){
     const w_code = localStorage.getItem("w_code");
     let w_arr = w_code.split(',');
-
     for(let i=0; i<w_arr.length; i++){
         if(w_arr[i] != e){
             let codes = w_arr + "," + e

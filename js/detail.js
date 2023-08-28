@@ -24,7 +24,7 @@ fetch('./js/data/md.json')
         return false;
     }
     elUl.innerHTML = `
-                <li class="d-on" >
+                <li class="d-on" data-code='${item.code}'>
                     <b>${item.name}</b>
                     <p class="des">${item.description}</p>
                     <figure>
@@ -54,14 +54,11 @@ $(".rev a:nth-of-type(2)").on('click',(e)=>{
 let wr_arr =[];
 function checkCode(){
     let wr_code = localStorage.getItem("w_code");
-    let setData = localStorage.getItem("pagecode");
+    let setData = $(".d-on").data('code');
     wr_arr = wr_code.split(',')
-    if(wr_arr[0] == ''){
-        $(".fav").toggleClass('active');
-    } else {
         for(let i=0; i<wr_arr.length; i++){
-            if(wr_arr[i] != setData){
-            } else {
+            if(wr_arr[i] == setData){
+                console.log(wr_arr[i])
                 for(let i=0; i<wr_arr.length; i++){
                     if(wr_arr[i] == setData){
                         $(".fav").addClass('active')
@@ -70,14 +67,13 @@ function checkCode(){
                     }
                 }
             }
-        }
     }
 }
 
 $(".rev a:nth-of-type(1)").on('click',(e)=>{
     e.preventDefault();
     let w_codes = localStorage.getItem("w_code")
-    let this_code = localStorage.getItem("pagecode");
+    let this_code = $(".d-on").data('code');
     if(!w_codes){
         localStorage.setItem("w_code",this_code)
     } else {
